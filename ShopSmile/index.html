@@ -62,7 +62,7 @@
 		<div class="jumbotron">
 			<h1>Hello, world!</h1>
 			<p>...</p>
-			<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+			<p><a class="btn btn-primary btn-lg" href="#detail" role="button">Learn more</a></p>
 		</div>
 	</div>
 
@@ -83,87 +83,7 @@
 			<a href="#" class="list-group-item">Khác</a>
 		</div>
 		<div class="col-md-8">
-			<div class="row">
-				<div class="col-sm-6 col-md-4">
-					<div class="thumbnail">
-						<img src="https://static.pexels.com/photos/479/landscape-nature-sunset-trees-large.jpg" alt="123">
-						<div class="caption">
-							<h3>Thumbnail label</h3>
-							<p>...</p>
-							<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4">
-					<div class="thumbnail">
-						<img src="https://static.pexels.com/photos/479/landscape-nature-sunset-trees-large.jpg" alt="123">
-						<div class="caption">
-							<h3>Thumbnail label</h3>
-							<p>...</p>
-							<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4">
-					<div class="thumbnail">
-						<img src="https://static.pexels.com/photos/479/landscape-nature-sunset-trees-large.jpg" alt="123">
-						<div class="caption">
-							<h3>Thumbnail label</h3>
-							<p>...</p>
-							<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4">
-					<div class="thumbnail">
-						<img src="https://static.pexels.com/photos/479/landscape-nature-sunset-trees-large.jpg" alt="123">
-						<div class="caption">
-							<h3>Thumbnail label</h3>
-							<p>...</p>
-							<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4">
-					<div class="thumbnail">
-						<img src="https://static.pexels.com/photos/479/landscape-nature-sunset-trees-large.jpg" alt="123">
-						<div class="caption">
-							<h3>Thumbnail label</h3>
-							<p>...</p>
-							<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4">
-					<div class="thumbnail">
-						<img src="https://static.pexels.com/photos/479/landscape-nature-sunset-trees-large.jpg" alt="123">
-						<div class="caption">
-							<h3>Thumbnail label</h3>
-							<p>...</p>
-							<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<nav col-md-12>
-				<ul class="pagination navbar-right">
-					<li>
-						<a href="#" aria-label="Previous">
-							<span aria-hidden="true">&laquo;</span>
-						</a>
-					</li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li>
-						<a href="#" aria-label="Next">
-							<span aria-hidden="true">&raquo;</span>
-						</a>
-					</li>
-				</ul>
-			</nav>
+			<div ng-view></div>
 		</div>
 	</div>
 
@@ -222,7 +142,7 @@
 			<div class="page-header">
 				<h3>Very hot</h3>
 			</div>
-			<div class="row slider4">
+			<div class="slider4">
 				<div class="slide">
 					<div class="thumbnail">
 						<img src="https://static.pexels.com/photos/479/landscape-nature-sunset-trees-large.jpg" alt="123">
@@ -328,7 +248,7 @@
 		$(document).ready(function () {
 			$('.slider4').bxSlider({
 				slideWidth: 280
-				, minSlides: 2
+				, minSlides: 1
 				, maxSlides: 4
 				, moveSlides: 1
 				, slideMargin: 10
