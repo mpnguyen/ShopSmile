@@ -14,19 +14,18 @@ body {
 	color: #fff;
 }
 
-/*Login*/
-#register{
-    position: absolute;
-    left: 10px;
+.products {
+	margin: 10px 0;
+	padding: 0 20px;
+	border: 0px solid #90A4AE;
+	display: inline-block;
 }
 
+.carousel-inner > .item > img, .carousel-inner > .item > a > img{
+      width: 80%;
+      margin: auto;
+  }
 
-
-/*Dialog*/
-.modal-header{
-    text-align: center;
-}
-.modal-title{
-    font-size: 20px;
-    font-weight: bold;
+#imgae-slider{
+	height: 400px;
 }
