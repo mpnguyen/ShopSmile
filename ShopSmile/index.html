@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
 	<link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
 	<link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bower_components/jquery.bxslider/jquery.bxslider.css">
 	<link rel="stylesheet" href="css/app.css">
 	<script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
@@ -221,8 +222,8 @@
 			<div class="page-header">
 				<h3>Very hot</h3>
 			</div>
-			<div class="row">
-				<div class="col-sm-4 col-md-3">
+			<div class="row slider4">
+				<div class="slide">
 					<div class="thumbnail">
 						<img src="https://static.pexels.com/photos/479/landscape-nature-sunset-trees-large.jpg" alt="123">
 						<div class="caption">
@@ -232,7 +233,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-4 col-md-3">
+				<div class="slide">
 					<div class="thumbnail">
 						<img src="https://static.pexels.com/photos/479/landscape-nature-sunset-trees-large.jpg" alt="123">
 						<div class="caption">
@@ -242,7 +243,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-4 col-md-3">
+				<div class="slide">
 					<div class="thumbnail">
 						<img src="https://static.pexels.com/photos/479/landscape-nature-sunset-trees-large.jpg" alt="123">
 						<div class="caption">
@@ -252,7 +253,27 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-4 col-md-3">
+				<div class="slide">
+					<div class="thumbnail">
+						<img src="https://static.pexels.com/photos/479/landscape-nature-sunset-trees-large.jpg" alt="123">
+						<div class="caption">
+							<h3>Thumbnail label</h3>
+							<p>...</p>
+							<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+						</div>
+					</div>
+				</div>
+				<div class="slide">
+					<div class="thumbnail">
+						<img src="https://static.pexels.com/photos/479/landscape-nature-sunset-trees-large.jpg" alt="123">
+						<div class="caption">
+							<h3>Thumbnail label</h3>
+							<p>...</p>
+							<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+						</div>
+					</div>
+				</div>
+				<div class="slide">
 					<div class="thumbnail">
 						<img src="https://static.pexels.com/photos/479/landscape-nature-sunset-trees-large.jpg" alt="123">
 						<div class="caption">
@@ -271,18 +292,18 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-4">
-					<h5 id='footer-header'> SITEMAP </h3>
-                    <div class="col-sm-4" style="padding: 0 0 0 0px">
-                        <p>News</p>
-                        <p>contact</p>
-                    </div>
-                    <div class="col-sm-4" style="padding: 0 0 0 0px">
-                        <p>FAQ</p>
-                        <p>Privacy Policy</p>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <h5 id='footer-header'> xxxx </h5>
+					<h5 id='footer-header'> SITEMAP </h5>
+					<div class="col-sm-4" style="padding: 0 0 0 0px">
+						<p>News</p>
+						<p>contact</p>
+					</div>
+					<div class="col-sm-4" style="padding: 0 0 0 0px">
+						<p>FAQ</p>
+						<p>Privacy Policy</p>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<h5 id='footer-header'> xxxx </h5>
 					<p>yyyyyyyyyyyyy</p>
 				</div>
 				<div class="col-sm-4">
@@ -294,6 +315,7 @@
 	</footer>
 
 	<script src="bower_components/jquery/jquery-2.2.4.min.js"></script>
+	<script src="bower_components/jquery.bxslider/jquery.bxslider.min.js"></script>
 	<script src="bower_components/angular/angular.js"></script>
 	<script src="bower_components/angular-route/angular-route.js"></script>
 	<script src="bower_components/bootstrap/js/bootstrap.min.js"></script>
@@ -302,6 +324,17 @@
 	<script src="components/version/version.js"></script>
 	<script src="components/version/version-directive.js"></script>
 	<script src="components/version/interpolate-filter.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('.slider4').bxSlider({
+				slideWidth: 280
+				, minSlides: 2
+				, maxSlides: 4
+				, moveSlides: 1
+				, slideMargin: 10
+			});
+		});
+	</script>
 </body>
 
 </html>
