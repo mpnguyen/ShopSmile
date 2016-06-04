@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="bower_components/jquery.bxslider/jquery.bxslider.css">
 	<link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/ionicons/css/ionicons.min.css">
 	<script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
@@ -45,7 +46,12 @@
 					<button type="submit" class="btn btn-danger">Submit</button>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mySignIn">Login</a>
+        
+                    </li>
 					<li>
+                        
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Xin chao, MPNGUYEN <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="#">Setting</a></li>
@@ -233,6 +239,44 @@
 			</div>
 		</div>
 	</footer>
+    
+    <!-- Sign in-->
+    <div id="mySignIn" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Đăng Nhập</h4>
+                </div>
+                <div class="modal-body">
+                    <label>Tên đăng nhập</label>
+                    <input  class="form-control" type="text">
+                    <label>Mật khẩu</label>
+                    <input  class="form-control" type="password">
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <button id="register" type="button" class="btn btn-success left">Đăng kí</button>
+                        </div>
+                        <div class="col-md-1">
+                            <a href="#"><i class="ion-social-facebook btn btn-primary icon-login-face"></i></a>
+                        </div>
+                        <div class="col-md-1">
+                            <a href="#"><i class="ion-social-google btn btn-danger icon-login-google"></i></a>
+                        </div>
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-primary" >Đăng nhập</button>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Thoát</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 	<script src="bower_components/jquery/jquery-2.2.4.min.js"></script>
 	<script src="bower_components/jquery.bxslider/jquery.bxslider.min.js"></script>
