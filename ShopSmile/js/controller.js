@@ -6,9 +6,10 @@ app.controller('ShopSmileCtrl', function ($scope, $firebaseObject) {
 	var syncObject = $firebaseObject(ref);
 	syncObject.$bindTo($scope, "data");
 
+	$scope.listItems = "";
 
 	$scope.loadPage = function (key) {
-		console.log($scope.data);
+
 	};
 
 });
