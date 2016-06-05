@@ -6,6 +6,9 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 	var syncObject = $firebaseObject(ref);
 	syncObject.$bindTo($scope, "data");
 
+    $scope.isLogin = false;
+    $scope.isAvatar = false;
+    
 	$scope.loadPage = function (key, pageNumber = 0) {
 		$scope.itemListName = key;
 		listItems = $scope.data['products'][key];
@@ -19,10 +22,18 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 	$scope.loginFacebook = function () {
 		firebase.auth().signInWithPopup(provider).then(function (result) {
 			// This gives you a Facebook Access Token. You can use it to access the Facebook API.
-			var token = result.credential.accessToken;
-			// The signed-in user info.
-			var user = result.user;
-			// ...
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+            $scope.userName = result.user.displayName;
+            if(result.user.photoURL==null){
+               
+            }
+            else{
+                $scope.isAvatar = true;
+                $scope.userAvatar = result.user.photoURL;
+            }
+            $scope.isLogin = true;
+            $scope.$apply();
 		}).catch(function (error) {
 			// Handle Errors here.
 			var errorCode = error.code;
@@ -40,10 +51,19 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 	$scope.loginGoogle = function () {
 		firebase.auth().signInWithPopup(provider).then(function (result) {
 			// This gives you a Google Access Token. You can use it to access the Google API.
-			var token = result.credential.accessToken;
-			// The signed-in user info.
-			console.log(result.user);
-			// ...
+          var token = result.credential.accessToken;
+          // The signed-in user info.
+          $scope.userName = result.user.displayName;
+            if(result.user.photoURL==null){
+                
+            }
+            else{
+                $scope.isAvatar = true;
+                $scope.userAvatar = result.user.photoURL;
+            }
+          
+          $scope.isLogin = true;
+          $scope.$apply();
 		}).catch(function (error) {
 			// Handle Errors here.
 			var errorCode = error.code;
@@ -55,6 +75,34 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 			// ...
 		});
 	};
+    
+    $scope.createAccount = function(){
+        firebase.auth().createUserWithEmailAndPassword($scope.userEmail, $scope.userPassword).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          
+        });
+    };
+    
+    $scope.loginAccount = function(){
+        firebase.auth().signInWithEmailAndPassword($scope.userEmail, $scope.userPassword).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // ...
+        });
+    };
+    
+    $scope.logout = function(){
+        firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+          $scope.userName = "";
+          $scope.isLogin = false;
+        }, function(error) {
+          // An error happened.
+        });
+    };
 
 	$scope.getNumber = function (num) {
 		intNum = parseInt(num);

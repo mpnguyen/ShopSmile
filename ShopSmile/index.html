@@ -47,15 +47,14 @@
 				</form>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="#" data-toggle="modal" data-target="#mySignIn">Login</a>
+						<a href="#" data-toggle="modal" data-target="#mySignIn" ng-show="!isLogin">Login</a>
 
 					</li>
 					<li>
-
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Xin chao, MPNGUYEN <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-show="isLogin" >Xin chao, {{userName}} <img ng-src={{userAvatar}} alt="avatar" class="img-circle" ng-show="isAvatar"><span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="#">Setting</a></li>
-							<li><a href="#">Log out</a></li>
+							<li><a href="#" ng-click="logout()">Log out</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -317,15 +316,15 @@
 					<h4 class="modal-title">Đăng Nhập</h4>
 				</div>
 				<div class="modal-body">
-					<label>Tên đăng nhập</label>
-					<input class="form-control" type="text">
-					<label>Mật khẩu</label>
-					<input class="form-control" type="password">
+					<label>Email</label>
+					<input class="form-control" type="text" ng-model="userEmail">
+					<label>Password</label>
+					<input class="form-control" type="password" ng-model="userPassword">
 				</div>
 				<div class="modal-footer">
 					<div class="row">
 						<div class="col-md-2">
-							<button id="register" type="button" class="btn btn-success left">Đăng kí</button>
+                            <button type="button" class="btn btn-primary" ng-click="loginAccount()">Đăng nhập</button>
 						</div>
 						<div class="col-md-1">
 							<a href="#" ng-click="loginFacebook()"><i class="ion-social-facebook btn btn-primary icon-login-face"></i></a>
@@ -336,7 +335,7 @@
 						<div class="col-md-4">
 						</div>
 						<div class="col-md-2">
-							<button type="button" class="btn btn-primary">Đăng nhập</button>
+							<button id="register" type="button" class="btn btn-success left">Đăng kí</button>
 						</div>
 						<div class="col-md-2">
 							<button type="button" class="btn btn-danger" data-dismiss="modal">Thoát</button>
