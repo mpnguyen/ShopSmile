@@ -60,3 +60,7 @@ body {
 .title-item {
 	height: 40px;
 }
+
+.iconAvatar {
+	max-width: 25px;
+}
