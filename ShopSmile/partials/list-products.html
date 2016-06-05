@@ -1,12 +1,12 @@
 <div class="row">
-	<div class="col-sm-6 col-md-4" ng-repeat="item in listItems">
+	<div class="col-sm-6 col-md-4" ng-repeat="item in outItems">
 		<div class="thumbnail">
-			<img ng-src="{{item.avatar}}" alt="item.title">
+			<div back-img="{{item.avatar}}" class="thumbImg"></div>
 			<div class=" caption ">
-				<h4>{{item.title}}</h4>
+				<h4 class="title-item">{{item.title}}</h4>
 				<h4>{{item.price}}</h4>
 				<p>{{item.detail}}</p>
-				<p><a href="#detail " class="btn btn-primary " role="button ">Chi tiết</a></p>
+				<p><a href="#detail " class="btn btn-primary " role="button" ng-click="loadDetail($index)">Chi tiết</a></p>
 			</div>
 		</div>
 	</div>
@@ -15,18 +15,14 @@
 <nav col-md-12>
 	<ul class="pagination navbar-right ">
 		<li>
-			<a href="# " aria-label="Previous ">
-				<span aria-hidden="true ">&laquo;</span>
+			<a href="#" aria-label="Previous ">
+				<span aria-hidden="true">&laquo;</span>
 			</a>
 		</li>
-		<li><a href="# ">1</a></li>
-		<li><a href="# ">2</a></li>
-		<li><a href="# ">3</a></li>
-		<li><a href="# ">4</a></li>
-		<li><a href="# ">5</a></li>
+		<li><a href="#home" role="button" ng-repeat="i in getNumber(maxPages) track by $index" ng-click="loadPage(itemListName,$index)">{{$index+1}}</a></li>
 		<li>
 			<a href="# " aria-label="Next ">
-				<span aria-hidden="true ">&raquo;</span>
+				<span aria-hidden="true">&raquo;</span>
 			</a>
 		</li>
 	</ul>

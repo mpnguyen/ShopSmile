@@ -1,16 +1,16 @@
 var app = angular.module('ShopSmileController', []);
 
-app.controller('ShopSmileCtrl', function ($scope, $firebaseObject) {
+app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 	var ref = firebase.database().ref();
 	$scope.data = "";
 	var syncObject = $firebaseObject(ref);
 	syncObject.$bindTo($scope, "data");
 
-	$scope.page = 0;
-	$scope.loadPage = function (key) {
-		$scope.pages = 0;
-		$scope.listItems = $scope.data['products'][key];
-		console.log($scope.listItems);
+	$scope.loadPage = function (key, pageNumber = 0) {
+		$scope.itemListName = key;
+		listItems = $scope.data['products'][key];
+		$rootScope.outItems = listItems.slice(parseInt(pageNumber) * 6, parseInt(pageNumber) * 6 + 6);
+		$rootScope.maxPages = listItems.length / 6;
 	};
 
 	var provider = new firebase.auth.FacebookAuthProvider();
@@ -42,7 +42,7 @@ app.controller('ShopSmileCtrl', function ($scope, $firebaseObject) {
 			// This gives you a Google Access Token. You can use it to access the Google API.
 			var token = result.credential.accessToken;
 			// The signed-in user info.
-			var user = result.user;
+			console.log(result.user);
 			// ...
 		}).catch(function (error) {
 			// Handle Errors here.
@@ -56,16 +56,19 @@ app.controller('ShopSmileCtrl', function ($scope, $firebaseObject) {
 		});
 	};
 
-
-	$scope.imageUpload = function (element) {
-		var reader = new FileReader();
-		reader.onload = function (event) {
-				$scope.images = event.target.result
-				$scope.$apply()
-			}
-			// when the file is read it triggers the onload event above.
-		reader.readAsDataURL(element.files[0]);
+	$scope.getNumber = function (num) {
+		intNum = parseInt(num);
+		if (isNaN(intNum)) {
+			intNum = 0;
+		}
+		if (intNum < num) {
+			intNum = intNum + 1;
+		}
+		return new Array(intNum);
 	};
 
-
+	$scope.loadDetail = function (index) {
+		$rootScope.product = $rootScope.outItems[index];
+		console.log($scope.product);
+	};
 });

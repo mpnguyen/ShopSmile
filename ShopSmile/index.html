@@ -18,23 +18,6 @@
 	<link rel="stylesheet" href="css/app.css">
 	<link rel="stylesheet" type="text/css" href="bower_components/ionicons/css/ionicons.min.css">
 	<script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-
-	<script>
-		$(function () {
-			$(":file").change(function () {
-				if (this.files && this.files[0]) {
-					var reader = new FileReader();
-					reader.onload = imageIsLoaded;
-					reader.readAsDataURL(this.files[0]);
-				}
-			});
-		});
-
-		function imageIsLoaded(e) {
-			$('#myImg').attr('src', e.target.result);
-		};
-	</script>
-
 </head>
 
 <body ng-controller="ShopSmileCtrl">
@@ -154,25 +137,27 @@
 				<span class="sr-only">Next</span>
 			</a>
 		</div>
+
+
 	</div>
 
 	<div class="container">
-		<div class="list-group col-md-4">
+		<div class="list-group col-md-3">
 			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('vehicles')">Xe</a>
-			<a href="#home" role="button" class="list-group-item">Nhà</a>
-			<a href="#home" role="button" class="list-group-item">Thời trang</a>
-			<a href="#home" role="button" class="list-group-item">Điện máy</a>
-			<a href="#home" role="button" class="list-group-item">Thiết bị di động</a>
-			<a href="#home" role="button" class="list-group-item">Việc làm</a>
-			<a href="#home" role="button" class="list-group-item">Đồ gia dụng</a>
-			<a href="#home" role="button" class="list-group-item" ng-click="itemClick = vehicles">Sách</a>
-			<a href="#home" role="button" class="list-group-item">Thể thao</a>
-			<a href="#home" role="button" class="list-group-item">Dụng cụ văn phòng</a>
-			<a href="#home" role="button" class="list-group-item">Sức khỏe, sắc đẹp</a>
-			<a href="#home" role="button" class="list-group-item">Dịch vụ</a>
-			<a href="#home" role="button" class="list-group-item">Khác</a>
+			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('houses')">Nhà</a>
+			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('fashions')">Thời trang</a>
+			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('electrical_equipments')">Điện máy</a>
+			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('mobiles')">Thiết bị di động</a>
+			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('jobs')">Việc làm</a>
+			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('housewares')">Đồ gia dụng</a>
+			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('books')">Sách</a>
+			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('sports')">Thể thao</a>
+			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('office_equipments')">Dụng cụ văn phòng</a>
+			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('health')">Sức khỏe, sắc đẹp</a>
+			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('services')">Dịch vụ</a>
+			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('others')">Khác</a>
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-9">
 			<div ng-view></div>
 		</div>
 	</div>
@@ -343,10 +328,10 @@
 							<button id="register" type="button" class="btn btn-success left">Đăng kí</button>
 						</div>
 						<div class="col-md-1">
-							<a href="#"><i class="ion-social-facebook btn btn-primary icon-login-face"></i></a>
+							<a href="#" ng-click="loginFacebook()"><i class="ion-social-facebook btn btn-primary icon-login-face"></i></a>
 						</div>
 						<div class="col-md-1">
-							<a href="#"><i class="ion-social-google btn btn-danger icon-login-google"></i></a>
+							<a href="#" ng-click="loginGoogle()"><i class="ion-social-google btn btn-danger icon-login-google"></i></a>
 						</div>
 						<div class="col-md-4">
 						</div>
@@ -369,7 +354,9 @@
 	<script src="bower_components/bootstrap/js/bootstrap.min.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 	<script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<script src="js/app.js"></script>
+	<script src="js/otherDirective.js"></script>
 	<script src="js/controller.js"></script>
 	<script src="components/version/version.js"></script>
 	<script src="components/version/version-directive.js"></script>

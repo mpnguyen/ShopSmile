@@ -11,11 +11,9 @@ firebase.initializeApp(config);
 // Declare app level module which depends on views, and components
 var app = angular.module('ShopSmile', [
   'ngRoute'
-	
 	, 'myApp.version'
-	
 	, 'ShopSmileController'
-	
+	, 'ShopSmileDirective'
 	, 'firebase'
 ]);
 
