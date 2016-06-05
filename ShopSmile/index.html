@@ -52,7 +52,7 @@
 					<li>
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-show="isLogin">Xin chao, {{userName}} <img ng-src={{userAvatar}} alt="avatar" class="img-circle" ng-show="isAvatar" class="iconAvatar"><span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#post">Post</a></li>
+							<li><a href="#post" ng-click="Post()">Post</a></li>
 							<li><a href="#">Setting</a></li>
 							<li><a href="#" ng-click="logout()">Log out</a></li>
 						</ul>

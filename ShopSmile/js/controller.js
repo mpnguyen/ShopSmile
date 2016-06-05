@@ -19,7 +19,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 			$scope.userName = user.displayName;
 			$scope.isLogin = true;
 		} else {
-			// No user is signed in.
+
 		}
 	});
 
@@ -157,32 +157,45 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 	};
 
 	$scope.PostNewProduct = function () {
-		// upload image to server
-		var uploadTask = storageRef.child($scope.type + '/' + file.name).put(file);
+		var user = firebase.auth().currentUser;
+		if (user) {
+			// upload image to server
+			var uploadTask = storageRef.child($scope.type + '/' + file.name).put(file);
+			uploadTask.on('state_changed', null, function (error) {
+				console.error('Upload failed:', error);
+			}, function () {
+				// tao data
+				var postData = {
+					avatar: uploadTask.snapshot.metadata.downloadURLs[0]
+					, detail: $scope.detail
+					, price: $scope.price
+					, salesman: {
+						address: $scope.address
+						, name: $scope.name
+						, phone: $scope.phone
+						, uid: firebase.auth().currentUser.uid
+					}
+					, status: $scope.status
+					, title: $scope.title
+				};
 
-		uploadTask.on('state_changed', null, function (error) {
-			console.error('Upload failed:', error);
-		}, function () {
-			// tao data
-			var postData = {
-				avatar: uploadTask.snapshot.metadata.downloadURLs[0]
-				, detail: $scope.detail
-				, price: $scope.price
-				, salesman: {
-					address: $scope.address
-					, name: $scope.name
-					, phone: $scope.phone
-					, uid: firebase.auth().currentUser.uid
-				}
-				, status: $scope.status
-				, title: $scope.title
-			};
+				var newPostKey = $scope.data['products'][$scope.type].length
+				var updates = {};
+				updates['/products/' + $scope.type + '/' + newPostKey] = postData;
+				ref.update(updates);
 
-			var newPostKey = $scope.data['products'][$scope.type].length
-			var updates = {};
-			updates['/products/' + $scope.type + '/' + newPostKey] = postData;
-			return ref.update(updates);
-		});
+				$rootScope.product = postData;
+			});
+		} else {
+			window.location.href = "index.html";
+		}
+	};
+
+	$scope.Post = function () {
+		var user = firebase.auth().currentUser;
+		if (user) {} else {
+			window.location.href = "index.html";
+		}
 	};
 
 
