@@ -34,12 +34,18 @@ body {
 	font-weight: bold;
 }
 
-/*  Slider */
-.carousel-inner > .item > img {
-      width: 99%;
-      margin: auto;
-  }
 
-#imgae-slider{
+/*  Slider */
+
+.carousel-inner > .item > img {
+	width: 99%;
+	margin: auto;
+}
+
+#imgae-slider {
 	height: 350px;
+}
+
+#veryHotSlider {
+	margin-bottom: 30px;
 }
