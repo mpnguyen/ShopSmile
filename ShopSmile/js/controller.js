@@ -142,35 +142,48 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 	// root in Storage
 	var storageRef = firebase.storage().ref();
 	var urlUploadImage = null;
-	var user = firebase.auth().currentUser;
-	//  userId = user.uid;
+	var file = null;
 
 	$scope.imageUpload = function (element) {
+		console.log($scope.type);
 		var reader = new FileReader();
 		reader.onload = function (event) {
 				$scope.images = event.target.result
-				$scope.$apply()
+				$scope.$apply();
 			}
 			// when the file is read it triggers the onload event above.
 		reader.readAsDataURL(element.files[0]);
+		file = element.files[0];
+	};
 
-		// upload image to server firebase
-		var uploadTask = storageRef.child('books/' + element.files[0].name).put(element.files[0]);
+	$scope.PostNewProduct = function () {
+		// upload image to server
+		var uploadTask = storageRef.child($scope.type + '/' + file.name).put(file);
 
 		uploadTask.on('state_changed', null, function (error) {
 			console.error('Upload failed:', error);
 		}, function () {
-			console.log(uploadTask.snapshot.metadata);
-			urlUploadImage = uploadTask.snapshot.metadata.downloadURLs[0];
-			console.log('File available at', urlUploadImage);
+			// tao data
+			var postData = {
+				avatar: uploadTask.snapshot.metadata.downloadURLs[0]
+				, detail: $scope.detail
+				, price: $scope.price
+				, salesman: {
+					address: $scope.address
+					, name: $scope.name
+					, phone: $scope.phone
+					, uid: firebase.auth().currentUser.uid
+				}
+				, status: $scope.status
+				, title: $scope.title
+			};
+
+			var newPostKey = $scope.data['products'][$scope.type].length
+			var updates = {};
+			updates['/products/' + $scope.type + '/' + newPostKey] = postData;
+			return ref.update(updates);
 		});
-
 	};
-
-
-
-
-
 
 
 });

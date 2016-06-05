@@ -3,45 +3,46 @@
 		<div class="form-group">
 			<label for="sanPham" class="col-sm-3 control-label">Loại sản phẩm</label>
 			<div class="col-sm-9">
-				<select class="form-control" id="sanPham">
-					<option>Xe</option>
-					<option>Nhà</option>
-					<option>Thời trang</option>
-					<option>Điện máy </option>
-					<option>Thiết bị di động</option>
-					<option>Việc làm</option>
-					<option>Đồ gia dụng</option>
-					<option>Sách</option>
-					<option>Thể thao</option>
-					<option>Dụng cụ văn phòng</option>
-					<option>Sức khỏe, sắc đẹp</option>
-					<option>Dịch vụ</option>
-					<option>Khác</option>
+				<select ng-model="type" class="form-control" id="sanPham">
+					<option value="vehicles">Xe</option>
+					<option value="houses">Nhà</option>
+					<option value="fashions
+ ">Thời trang</option>
+					<option value="electrical_equipments">Điện máy </option>
+					<option value="mobiles">Thiết bị di động</option>
+					<option value="jobs">Việc làm</option>
+					<option value="housewares">Đồ gia dụng</option>
+					<option value="books">Sách</option>
+					<option value="sports">Thể thao</option>
+					<option value="office_equipments">Dụng cụ văn phòng</option>
+					<option value="health">Sức khỏe, sắc đẹp</option>
+					<option value="services">Dịch vụ</option>
+					<option value="others">Khác</option>
 				</select>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="title" class="col-sm-3 control-label">Tên sản phẩm</label>
 			<div class="col-sm-9">
-				<input type=text class="form-control" placeholder="Tên sản phẩm" id="title">
+				<input ng-model="title" type=text class="form-control" placeholder="Tên sản phẩm" id="title">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="detail" class="col-sm-3 control-label">Mô tả</label>
 			<div class="col-sm-9">
-				<textarea class="form-control" placeholder="Thông tin chi tiết về sản phẩm"></textarea>
+				<textarea ng-model="detail" class="form-control" placeholder="Thông tin chi tiết về sản phẩm" id="detail"></textarea>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="price" class="col-sm-3 control-label">Giá bán</label>
 			<div class="col-sm-9">
-				<input type="number" class="form-control" placeholder="Giá muốn bán" id="price">
+				<input ng-model="price" type="number" class="form-control" placeholder="Giá muốn bán" id="price">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="status" class="col-sm-3 control-label">Trạng thái</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" placeholder="Còn mới hay đã sử dụng bao lâu" id="status">
+				<input ng-model="status" type="text" class="form-control" placeholder="Còn mới hay đã sử dụng bao lâu" id="status">
 			</div>
 		</div>
 		<div class="form-group">
@@ -56,25 +57,25 @@
 		<div class="form-group">
 			<label for="name" class="col-sm-3 control-label">Họ tên</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" placeholder="Họ tên người bán" id="name">
+				<input ng-model="name" type="text" class="form-control" placeholder="Họ tên người bán" id="name">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="address" class="col-sm-3 control-label">Địa chỉ</label>
-			<div class="col-sm-3">
-				<input type="text" class="form-control" placeholder="Địa chỉ người bán" id="address">
+			<div class="col-sm-9">
+				<input ng-model="address" type="text" class="form-control" placeholder="Địa chỉ người bán" id="address">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="phone" class="col-sm-3 control-label">Số điện thoại</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" placeholder="Số điện thoại người bán" id="phone">
+				<input ng-model="phone" type="text" class="form-control" placeholder="Số điện thoại người bán" id="phone">
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-6 col-sm-6">
-				<input type="button" class="btn btn-default" value="Post">
-				<input type="button" class="btn btn-default" value="Cancel">
+				<input ng-click="PostNewProduct()" type="button" class="btn btn-default" value="Post">
+				<a href="#home" class="btn btn-default">Cancel</a>
 			</div>
 		</div>
 	</form>
