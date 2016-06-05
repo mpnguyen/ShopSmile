@@ -6,10 +6,11 @@ app.controller('ShopSmileCtrl', function ($scope, $firebaseObject) {
 	var syncObject = $firebaseObject(ref);
 	syncObject.$bindTo($scope, "data");
 
-	$scope.listItems = "";
-
+	$scope.page = 0;
 	$scope.loadPage = function (key) {
-
+		$scope.pages = 0;
+		$scope.listItems = $scope.data['products'][key];
+		console.log($scope.listItems);
 	};
    
     var provider = new firebase.auth.FacebookAuthProvider();
