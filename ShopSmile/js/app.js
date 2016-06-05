@@ -29,6 +29,10 @@ app.config(['$routeProvider', function ($routeProvider) {
 			templateUrl: 'partials/product-detail.html'
 			, controller: 'ShopSmileCtrl'
 		})
+		.when('/post', {
+			templateUrl: 'partials/post-item.html'
+			, controller: 'ShopSmileCtrl'
+		})
 		.otherwise({
 			redirectTo: '/home'
 		});

@@ -33,3 +33,13 @@ body {
 	font-size: 20px;
 	font-weight: bold;
 }
+
+/*  Slider */
+.carousel-inner > .item > img {
+      width: 99%;
+      margin: auto;
+  }
+
+#imgae-slider{
+	height: 350px;
+}
