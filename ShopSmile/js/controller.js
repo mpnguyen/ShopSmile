@@ -8,6 +8,21 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 
     $scope.isLogin = false;
     $scope.isAvatar = false;
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+            if(user.photoURL==null){
+               
+            }
+            else{
+                $scope.isAvatar = true;
+                $scope.userAvatar = user.photoURL;
+            }
+            $scope.userName = user.displayName;
+            $scope.isLogin = true;
+      } else {
+        // No user is signed in.
+      }
+    });
     
 	$scope.loadPage = function (key, pageNumber = 0) {
 		$scope.itemListName = key;
@@ -16,6 +31,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 		$rootScope.maxPages = listItems.length / 6;
 	};
 
+    
 	var provider = new firebase.auth.FacebookAuthProvider();
 	provider.addScope('public_profile');
 
@@ -33,6 +49,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
                 $scope.userAvatar = result.user.photoURL;
             }
             $scope.isLogin = true;
+            $('#mySignIn').modal('hide');
             $scope.$apply();
 		}).catch(function (error) {
 			// Handle Errors here.
@@ -63,6 +80,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
             }
           
           $scope.isLogin = true;
+          $('#mySignIn').modal('hide');
           $scope.$apply();
 		}).catch(function (error) {
 			// Handle Errors here.
