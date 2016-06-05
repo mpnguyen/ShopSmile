@@ -1,5 +1,13 @@
 'use strict';
 
+var config = {
+	apiKey: "AIzaSyD55oGRMOEDLbNF2YkXb5fdeLvz9-qEI1c"
+	, authDomain: "project-8852431456818982833.firebaseapp.com"
+	, databaseURL: "https://project-8852431456818982833.firebaseio.com"
+	, storageBucket: "project-8852431456818982833.appspot.com"
+};
+firebase.initializeApp(config);
+
 // Declare app level module which depends on views, and components
 var app = angular.module('ShopSmile', [
   'ngRoute'
@@ -7,6 +15,8 @@ var app = angular.module('ShopSmile', [
 	, 'myApp.version'
 	
 	, 'ShopSmileController'
+	
+	, 'firebase'
 ]);
 
 app.config(['$routeProvider', function ($routeProvider) {
