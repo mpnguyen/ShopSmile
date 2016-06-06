@@ -3,9 +3,9 @@
 		<div class="thumbnail">
 			<div back-img="{{item.avatar}}" class="thumbImg"></div>
 			<div class=" caption ">
-				<h4 class="title-item">{{item.title}}</h4>
+				<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
 				<h4>{{item.price}}</h4>
-				<p>{{item.detail}}</p>
+				<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
 				<p><a href="#detail" class="btn btn-primary " role="button" ng-click="loadDetail($index)">Chi tiết</a></p>
 			</div>
 		</div>

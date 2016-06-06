@@ -16,17 +16,17 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 				$scope.isAvatar = true;
 				$scope.userAvatar = user.photoURL;
 			}
-            
-            if (user.displayName == null) {
-                $scope.userName = user.email;
+
+			if (user.displayName == null) {
+				$scope.userName = user.email;
 			} else {
 				$scope.userName = user.displayName;
 			}
-            
+
 			$scope.isLogin = true;
-            $scope.$apply();
+			$scope.$apply();
 		} else {
-                
+
 		}
 	});
 
@@ -46,7 +46,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 			// This gives you a Facebook Access Token. You can use it to access the Facebook API.
 			var token = result.credential.accessToken;
 			// The signed-in user info.
-            $scope.messageError = "Đăng nhập thành công";
+			$scope.messageError = "Đăng nhập thành công";
 			$scope.userName = result.user.displayName;
 			if (result.user.photoURL == null) {
 
@@ -56,15 +56,14 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 			}
 			$scope.isLogin = true;
 			$('#mySignIn').modal('hide');
-            
-            var user = firebase.auth().currentUser;
-            if($scope.data['users'][user.uid]!=undefined){
-                $scope.userCoin = $scope.data['users'][user.uid]['coin'];
-                $scope.$apply();
-                return;
-            }
-            else{
-                var postData = {
+
+			var user = firebase.auth().currentUser;
+			if ($scope.data['users'][user.uid] != undefined) {
+				$scope.userCoin = $scope.data['users'][user.uid]['coin'];
+				$scope.$apply();
+				return;
+			} else {
+				var postData = {
 					coin: 100
 				};
 
@@ -72,8 +71,8 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 				var updates = {};
 				updates['/users/' + newPostKey] = postData;
 				ref.update(updates);
-            }
-            
+			}
+
 			$scope.$apply();
 		}).catch(function (error) {
 			// Handle Errors here.
@@ -94,7 +93,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 			// This gives you a Google Access Token. You can use it to access the Google API.
 			var token = result.credential.accessToken;
 			// The signed-in user info.
-            $scope.messageError = "Đăng nhập thành công";
+			$scope.messageError = "Đăng nhập thành công";
 			$scope.userName = result.user.displayName;
 			if (result.user.photoURL == null) {
 
@@ -105,15 +104,14 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 
 			$scope.isLogin = true;
 			$('#mySignIn').modal('hide');
-            
-            var user = firebase.auth().currentUser;
-            if($scope.data['users'][user.uid]!=undefined){
-                $scope.userCoin = $scope.data['users'][user.uid]['coin'];
-                $scope.$apply();
-                return;
-            }
-            else{
-                var postData = {
+
+			var user = firebase.auth().currentUser;
+			if ($scope.data['users'][user.uid] != undefined) {
+				$scope.userCoin = $scope.data['users'][user.uid]['coin'];
+				$scope.$apply();
+				return;
+			} else {
+				var postData = {
 					coin: 100
 				};
 
@@ -121,8 +119,8 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 				var updates = {};
 				updates['/users/' + newPostKey] = postData;
 				ref.update(updates);
-            }
-            
+			}
+
 			$scope.$apply();
 		}).catch(function (error) {
 			// Handle Errors here.
@@ -139,46 +137,42 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 	$scope.createAccount = function () {
 		firebase.auth().createUserWithEmailAndPassword($scope.userEmail, $scope.userPassword).then(function () {
 			// The signed-in user info.
-            $scope.messageError = "Tạo tài khoản thành công";
+			$scope.messageError = "Tạo tài khoản thành công";
 			$scope.$apply();
-            
+
 		}).catch(function (error) {
 			// Handle Errors here.
 			var errorCode = error.code;
 			var errorMessage = error.message;
-            if (errorCode == 'auth/email-already-in-use') {
-                $scope.messageError = "Email tài khoản đã tồn tại";
-            } 
-            else if (errorCode == 'auth/invalid-email'){
-                $scope.messageError = "Email không hợp lệ";
-            }
-            else if (errorCode == 'auth/operation-not-allowed'){
-                $scope.messageError = "Tài khoản không thể dùng được";
-            }
-            else if (errorCode == 'auth/weak-password'){
-                $scope.messageError = "Mật khẩu không đủ mạnh để đăng kí";
-            }
-            $scope.$apply();
+			if (errorCode == 'auth/email-already-in-use') {
+				$scope.messageError = "Email tài khoản đã tồn tại";
+			} else if (errorCode == 'auth/invalid-email') {
+				$scope.messageError = "Email không hợp lệ";
+			} else if (errorCode == 'auth/operation-not-allowed') {
+				$scope.messageError = "Tài khoản không thể dùng được";
+			} else if (errorCode == 'auth/weak-password') {
+				$scope.messageError = "Mật khẩu không đủ mạnh để đăng kí";
+			}
+			$scope.$apply();
 		});
 	};
 
-    $scope.userPassword="";
+	$scope.userPassword = "";
 	$scope.loginAccount = function () {
 		firebase.auth().signInWithEmailAndPassword($scope.userEmail, $scope.userPassword).then(function () {
 			// The signed-in user info.
-            $scope.messageError = "Đăng nhập thành công";
-            $scope.userName = $scope.userEmail;
-            $scope.isLogin = true;
-            $('#mySignIn').modal('hide');
-            
-            var user = firebase.auth().currentUser;
-            if($scope.data['users'][user.uid]!=undefined){
-                $scope.userCoin = $scope.data['users'][user.uid]['coin'];
-                $scope.$apply();
-                return;
-            }
-            else{
-                var postData = {
+			$scope.messageError = "Đăng nhập thành công";
+			$scope.userName = $scope.userEmail;
+			$scope.isLogin = true;
+			$('#mySignIn').modal('hide');
+
+			var user = firebase.auth().currentUser;
+			if ($scope.data['users'][user.uid] != undefined) {
+				$scope.userCoin = $scope.data['users'][user.uid]['coin'];
+				$scope.$apply();
+				return;
+			} else {
+				var postData = {
 					coin: 100
 				};
 
@@ -186,33 +180,29 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 				var updates = {};
 				updates['/users/' + newPostKey] = postData;
 				ref.update(updates);
-            }
-            
-            $scope.$apply();
+			}
+
+			$scope.$apply();
 		}).catch(function (error) {
 			// Handle Errors here.
 			var errorCode = error.code;
 			var errorMessage = error.message;
-            if (errorCode == 'auth/user-disabled') {
-                $scope.messageError = "Tài khoản đã bị khóa";
-            } 
-            else if (errorCode == 'auth/invalid-email'){
-                $scope.messageError = "Email không hợp lệ";
-            }
-            else if (errorCode == 'auth/user-not-found'){
-                $scope.messageError = "Tài khoản không tồn tại";
-            }
-            else if (errorCode == 'auth/wrong-password'){
-                $scope.messageError = "Mật khẩu không đúng";
-            }
-            else if (errorCode == 'auth/argument-error'){
-                $scope.messageError = "Nhập đầy đủ tài khoản và mật khẩu";
-            }
-            $scope.$apply();
+			if (errorCode == 'auth/user-disabled') {
+				$scope.messageError = "Tài khoản đã bị khóa";
+			} else if (errorCode == 'auth/invalid-email') {
+				$scope.messageError = "Email không hợp lệ";
+			} else if (errorCode == 'auth/user-not-found') {
+				$scope.messageError = "Tài khoản không tồn tại";
+			} else if (errorCode == 'auth/wrong-password') {
+				$scope.messageError = "Mật khẩu không đúng";
+			} else if (errorCode == 'auth/argument-error') {
+				$scope.messageError = "Nhập đầy đủ tài khoản và mật khẩu";
+			}
+			$scope.$apply();
 		});
 	};
 
-    
+
 	$scope.logout = function () {
 		firebase.auth().signOut().then(function () {
 			// Sign-out successful.
@@ -222,7 +212,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 			// An error happened.
 		});
 	};
-////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////
 	$scope.getNumber = function (num) {
 		intNum = parseInt(num);
 		if (isNaN(intNum)) {
@@ -302,17 +292,21 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 		}
 	};
 
-    ////////////////////////////////////////
-    $scope.setCoin = function(){
-        var user = firebase.auth().currentUser;
-        if($scope.data['users'][user.uid]!=undefined){
-            $scope.userCoin = $scope.data['users'][user.uid]['coin'];
-        }
-    }
-    
-    $scope.resetLogin = function(){
-        $scope.userEmail = "";
-        $scope.userPassword = "";
-        $scope.messageError = "";
-    }
+	////////////////////////////////////////
+	$scope.setCoin = function () {
+		var user = firebase.auth().currentUser;
+		if ($scope.data['users'][user.uid] != undefined) {
+			$scope.userCoin = $scope.data['users'][user.uid]['coin'];
+		}
+	}
+
+	$scope.resetLogin = function () {
+		$scope.userEmail = "";
+		$scope.userPassword = "";
+		$scope.messageError = "";
+	}
+
+	$scope.maxTitle = 40;
+	$scope.maxDetail = 80;
+
 });

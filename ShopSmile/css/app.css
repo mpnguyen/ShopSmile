@@ -17,13 +17,14 @@ body {
 
 /*Login*/
 
-#exit{
+#exit {
 	width: 70px;
 }
 
-#register{
+#register {
 	margin-left: 8px;
 }
+
 
 /*Dialog*/
 
@@ -68,28 +69,32 @@ body {
 	max-width: 25px !important;
 }
 
-.icon-Login{
-    height: 34px;
-    width: 34px;
-    margin-left: 13px;
+.icon-Login {
+	height: 34px;
+	width: 34px;
+	margin-left: 13px;
 }
 
-.inputLogin{
-    margin-top: 10px;
-    margin-bottom: 10px;
+.inputLogin {
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
-.txtLogin{
-    font-size: 15px;
+.txtLogin {
+	font-size: 15px;
 }
 
-.messageError{
-    font-size: 15px;
-    color: #F57C00;
+.messageError {
+	font-size: 15px;
+	color: #F57C00;
 }
 
-.icon-money{
-    font-size: 20px;
-    color: white;
-    margin-top: 10px;
+.icon-money {
+	font-size: 20px;
+	color: white;
+	margin-top: 10px;
+}
+
+.list-item-detail {
+	height: 60px;
 }
