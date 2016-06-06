@@ -17,11 +17,13 @@ body {
 
 /*Login*/
 
-#register {
-	position: absolute;
-	left: 10px;
+#exit{
+	width: 70px;
 }
 
+#register{
+	margin-left: 8px;
+}
 
 /*Dialog*/
 
@@ -30,7 +32,7 @@ body {
 }
 
 .modal-title {
-	font-size: 20px;
+	font-size: 30px;
 	font-weight: bold;
 }
 
@@ -64,4 +66,25 @@ body {
 
 .iconAvatar {
 	max-width: 25px;
+}
+
+.icon-Login{
+    height: 34px;
+    width: 34px;
+    margin-left: 13px;
+}
+
+.inputLogin{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.txtLogin{
+    font-size: 15px;
+}
+
+.messageError{
+    font-size: 15px;
+    color: #F57C00;
+}
 }

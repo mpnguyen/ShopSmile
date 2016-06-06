@@ -296,32 +296,33 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title">Đăng Nhập</h4>
+					<h4 class="modal-title">ĐĂNG NHẬP</h4>
 				</div>
 				<div class="modal-body">
-					<label>Email</label>
-					<input class="form-control" type="text" ng-model="userEmail">
-					<label>Password</label>
-					<input class="form-control" type="password" ng-model="userPassword">
+					<label class="txtLogin">Email</label>
+					<input class="form-control inputLogin" type="text" ng-model="userEmail">
+					<label class="txtLogin">Password</label>
+					<input class="form-control inputLogin" type="password" ng-model="userPassword">
+                    <label class="messageError">{{messageError}}</label>
 				</div>
 				<div class="modal-footer">
 					<div class="row">
 						<div class="col-md-2">
-							<button type="button" class="btn btn-primary" ng-click="loginAccount()">Đăng nhập</button>
+							<button type="button" class="btn btn-default" ng-click="loginAccount()">Đăng nhập</button>
 						</div>
 						<div class="col-md-1">
-							<a href="#" ng-click="loginFacebook()"><i class="ion-social-facebook btn btn-primary icon-login-face"></i></a>
+							<a href="#" ng-click="loginFacebook()"><i class="ion-social-facebook btn btn-primary icon-Login"></i></a>
 						</div>
 						<div class="col-md-1">
-							<a href="#" ng-click="loginGoogle()"><i class="ion-social-google btn btn-danger icon-login-google"></i></a>
+							<a href="#" ng-click="loginGoogle()"><i class="ion-social-google btn btn-danger icon-Login"></i></a>
 						</div>
 						<div class="col-md-4">
 						</div>
 						<div class="col-md-2">
-							<button id="register" type="button" class="btn btn-success left">Đăng kí</button>
+							<button id="register" type="button" class="btn btn-default" ng-click="createAccount()">Đăng kí</button>
 						</div>
 						<div class="col-md-2">
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Thoát</button>
+							<button id="exit" type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
 						</div>
 					</div>
 				</div>

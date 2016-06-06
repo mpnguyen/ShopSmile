@@ -16,7 +16,12 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 				$scope.isAvatar = true;
 				$scope.userAvatar = user.photoURL;
 			}
-			$scope.userName = user.displayName;
+            
+            if (user.displayName == null) {
+                $scope.userName = user.email;
+			} else {
+				$scope.userName = user.displayName;
+			}
 			$scope.isLogin = true;
 		} else {
 
@@ -92,20 +97,58 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 	};
 
 	$scope.createAccount = function () {
-		firebase.auth().createUserWithEmailAndPassword($scope.userEmail, $scope.userPassword).catch(function (error) {
+		firebase.auth().createUserWithEmailAndPassword($scope.userEmail, $scope.userPassword).then(function () {
+			// The signed-in user info.
+            $scope.messageError = "Tạo tài khoản thành công";
+			$scope.$apply();
+		}).catch(function (error) {
 			// Handle Errors here.
 			var errorCode = error.code;
 			var errorMessage = error.message;
-
+            if (errorCode == 'auth/email-already-in-use') {
+                $scope.messageError = "Email tài khoản đã tồn tại";
+            } 
+            else if (errorCode == 'auth/invalid-email'){
+                $scope.messageError = "Email không hợp lệ";
+            }
+            else if (errorCode == 'auth/operation-not-allowed'){
+                $scope.messageError = "Tài khoản không thể dùng được";
+            }
+            else if (errorCode == 'auth/weak-password'){
+                $scope.messageError = "Mật khẩu không đủ mạnh để đăng kí";
+            }
+            $scope.$apply();
 		});
 	};
 
+    $scope.userPassword="";
 	$scope.loginAccount = function () {
-		firebase.auth().signInWithEmailAndPassword($scope.userEmail, $scope.userPassword).catch(function (error) {
+		firebase.auth().signInWithEmailAndPassword($scope.userEmail, $scope.userPassword).then(function () {
+			// The signed-in user info.
+            $scope.messageError = "Đăng nhập thành công";
+            $scope.userName = $scope.userEmail;
+			$scope.$apply();
+            $('#mySignIn').modal('hide');
+		}).catch(function (error) {
 			// Handle Errors here.
 			var errorCode = error.code;
 			var errorMessage = error.message;
-			// ...
+            if (errorCode == 'auth/user-disabled') {
+                $scope.messageError = "Tài khoản đã bị khóa";
+            } 
+            else if (errorCode == 'auth/invalid-email'){
+                $scope.messageError = "Email không hợp lệ";
+            }
+            else if (errorCode == 'auth/user-not-found'){
+                $scope.messageError = "Tài khoản không tồn tại";
+            }
+            else if (errorCode == 'auth/wrong-password'){
+                $scope.messageError = "Mật khẩu không đúng";
+            }
+            else if (errorCode == 'auth/argument-error'){
+                $scope.messageError = "Nhập đầy đủ tài khoản và mật khẩu";
+            }
+            $scope.$apply();
 		});
 	};
 
