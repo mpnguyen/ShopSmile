@@ -65,7 +65,7 @@ body {
 }
 
 .iconAvatar {
-	max-width: 25px;
+	max-width: 25px !important;
 }
 
 .icon-Login{
@@ -87,4 +87,9 @@ body {
     font-size: 15px;
     color: #F57C00;
 }
+
+.icon-money{
+    font-size: 20px;
+    color: white;
+    margin-top: 10px;
 }
