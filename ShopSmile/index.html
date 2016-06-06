@@ -21,7 +21,7 @@
 </head>
 
 <body ng-controller="ShopSmileCtrl">
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -46,9 +46,9 @@
 					<button type="submit" class="btn btn-danger">Submit</button>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a><i class="ion-social-usd icon-money"></i>{{userCoin}}</a>
-                    </li>
+					<li>
+						<a><i class="ion-social-usd icon-money"></i>{{userCoin}}</a>
+					</li>
 					<li>
 						<a href="#" data-toggle="modal" data-target="#mySignIn" ng-show="!isLogin" ng-click="resetLogin()">Login</a>
 					</li>
@@ -127,22 +127,36 @@
 	</div>
 
 	<div class="container">
-		<div class="list-group col-md-3">
-			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('vehicles')">Xe</a>
-			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('houses')">Nhà</a>
-			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('fashions')">Thời trang</a>
-			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('electrical_equipments')">Điện máy</a>
-			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('mobiles')">Thiết bị di động</a>
-			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('jobs')">Việc làm</a>
-			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('housewares')">Đồ gia dụng</a>
-			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('books')">Sách</a>
-			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('sports')">Thể thao</a>
-			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('office_equipments')">Dụng cụ văn phòng</a>
-			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('health')">Sức khỏe, sắc đẹp</a>
-			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('services')">Dịch vụ</a>
-			<a href="#home" role="button" class="list-group-item" ng-click="loadPage('others')">Khác</a>
+		<div class="col-md-3">
+			<div class="list-group">
+				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('vehicles')">Xe</a>
+				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('houses')">Nhà</a>
+				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('fashions')">Thời trang</a>
+				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('electrical_equipments')">Điện máy</a>
+				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('mobiles')">Thiết bị di động</a>
+				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('jobs')">Việc làm</a>
+				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('housewares')">Đồ gia dụng</a>
+				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('books')">Sách</a>
+				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('sports')">Thể thao</a>
+				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('office_equipments')">Dụng cụ văn phòng</a>
+				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('health')">Sức khỏe, sắc đẹp</a>
+				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('services')">Dịch vụ</a>
+				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('others')">Khác</a>
+			</div>
+			<div class="fb-page" data-href="https://www.facebook.com/bobamarines/?fref=ts" data-width="340" data-hide-cover="false" data-show-facepile="true"></div>
+			<img class="img-responsive" src="http://www.businessstudynotes.com/wp-content/uploads/2016/05/Types-of-Advertising-Media.jpg" alt="ads">
+			<img class="img-responsive" src="http://www.businessstudynotes.com/wp-content/uploads/2016/05/Types-of-Advertising-Media.jpg" alt="ads">
 		</div>
 		<div class="col-md-9">
+			<div class="jumbotron">
+				<h1>Hello, world!</h1>
+				<p>...</p>
+				<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+				<div id="home">
+					<div id="detail"></div>
+				</div>
+			</div>
+
 			<div ng-view></div>
 		</div>
 	</div>
@@ -207,9 +221,9 @@
 					<div class="thumbnail">
 						<img src="https://static.pexels.com/photos/479/landscape-nature-sunset-trees-large.jpg" alt="123">
 						<div class="caption">
-							<h3>Thumbnail label</h3>
+							<h3>Top</h3>
 							<p>...</p>
-							<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+							<p><a href="#home" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
 						</div>
 					</div>
 				</div>
@@ -217,9 +231,9 @@
 					<div class="thumbnail">
 						<img src="https://static.pexels.com/photos/479/landscape-nature-sunset-trees-large.jpg" alt="123">
 						<div class="caption">
-							<h3>Thumbnail label</h3>
+							<h3>Detail</h3>
 							<p>...</p>
-							<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+							<p><a href="#detail" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
 						</div>
 					</div>
 				</div>
@@ -306,7 +320,7 @@
 					<input class="form-control inputLogin" type="text" ng-model="userEmail">
 					<label class="txtLogin">Password</label>
 					<input class="form-control inputLogin" type="password" ng-model="userPassword">
-                    <label class="messageError">{{messageError}}</label>
+					<label class="messageError">{{messageError}}</label>
 				</div>
 				<div class="modal-footer">
 					<div class="row">
@@ -340,6 +354,7 @@
 	<script src="bower_components/bootstrap/js/bootstrap.min.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 	<script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+	<script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5"></script>
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<script src="js/app.js"></script>
 	<script src="js/otherDirective.js"></script>
@@ -355,6 +370,20 @@
 				, maxSlides: 4
 				, moveSlides: 1
 				, slideMargin: 10
+			});
+		});
+		$(document).ready(function () {
+			$('a[href^="#"]').click(function () {
+				var target = $(this.hash);
+				var hash = this.hash;
+				if (target.length == 0) target = $('a[name="' + this.hash.substr(1) + '"]');
+				if (target.length == 0) target = $('html');
+				$('html, body').animate({
+					scrollTop: target.offset().top
+				}, 500, function () {
+					location.hash = hash;
+				});
+				return false;
 			});
 		});
 	</script>
