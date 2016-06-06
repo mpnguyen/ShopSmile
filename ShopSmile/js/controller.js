@@ -309,4 +309,21 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 	$scope.maxTitle = 40;
 	$scope.maxDetail = 80;
 
+    function initialize() {
+        
+          var mapProp = {
+            center:new google.maps.LatLng(10.745439, 106.692296),
+            zoom:17,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+          };
+          var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+        
+          var marker=new google.maps.Marker({
+            position:new google.maps.LatLng(10.745439, 106.692296),
+            animation:google.maps.Animation.BOUNCE
+            });
+
+           marker.setMap(map);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
 });

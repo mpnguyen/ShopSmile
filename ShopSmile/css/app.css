@@ -89,10 +89,24 @@ body {}
 
 .icon-money {
 	font-size: 20px;
-	color: white;
-	margin-top: 10px;
+    color: #F9A825;
+    margin-top: 10px;
 }
 
 .list-item-detail {
 	height: 60px;
+}
+
+.txtMoney{
+    font-size: 20px;
+    color: #F9A825 !important;
+}
+
+#googleMap{
+    width:300px;
+    height:180px;
+}
+
+#smile{
+    color: #0288D1;
 }

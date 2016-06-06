@@ -47,14 +47,12 @@
 				</form>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a><i class="ion-social-usd icon-money"></i>{{userCoin}}</a>
-					</li>
-					<li>
 						<a href="#" data-toggle="modal" data-target="#mySignIn" ng-show="!isLogin" ng-click="resetLogin()">Login</a>
 					</li>
 					<li>
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-show="isLogin" ng-click="setCoin()">Xin chao, {{userName}} <img ng-src={{userAvatar}} alt="avatar" class="img-circle iconAvatar" ng-show="isAvatar"><span class="caret"></span></a>
+						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-show="isLogin" ng-click="setCoin()">Xin chao, {{userName}} <img ng-src={{userAvatar}} alt="avatar" class="img-circle iconAvatar" ng-show="isAvatar"><span class="caret"></span></a>
 						<ul class="dropdown-menu">
+                            <li><a class="txtMoney"><i class="ion-social-usd icon-money"></i>{{userCoin}}</a></li>
 							<li><a href="#post" ng-click="Post()">Post</a></li>
 							<li><a href="#">Setting</a></li>
 							<li><a href="#" ng-click="logout()">Log out</a></li>
@@ -286,23 +284,23 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-4">
-					<h5 id='footer-header'> SITEMAP </h5>
-					<div class="col-sm-4" style="padding: 0 0 0 0px">
-						<p>News</p>
-						<p>contact</p>
+					<h5 id='footer-header'> LIÊN HỆ </h5>
+					<div >
+                        <p>Team Developer: Smile</p>
+						<p>Phone: 01697921700</p>
+                        <p>Feedback to email: nchai.ctt@gmail.com</p>
+						<p>Địa chỉ: 231/116/1E Dương Bá Trạc, P1, Q8, TP HCM</p>
 					</div>
-					<div class="col-sm-4" style="padding: 0 0 0 0px">
-						<p>FAQ</p>
-						<p>Privacy Policy</p>
-					</div>
+					
 				</div>
 				<div class="col-sm-4">
-					<h5 id='footer-header'> xxxx </h5>
-					<p>yyyyyyyyyyyyy</p>
+					<h5 id='footer-header'> Map Address </h5>
+					<div id="googleMap"></div>
 				</div>
 				<div class="col-sm-4">
-					<h5 id='footer-header'> xxxxx </h5>
-					<p>uuuuuuuuuuuuuuu</p>
+					<h5 id='footer-header'> Thông Tin </h5>
+					<p>Phiên bản 1.0.0</p>
+                    <p>Phát triển bởi <span id="smile">SmileTeam</span> &copy; 2015 - 2016</p>
 				</div>
 			</div>
 		</div>
@@ -362,6 +360,7 @@
 	<script src="components/version/version.js"></script>
 	<script src="components/version/version-directive.js"></script>
 	<script src="components/version/interpolate-filter.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
 	<script>
 		$(document).ready(function () {
 			$('.slider4').bxSlider({
@@ -387,6 +386,7 @@
 			});
 		});
 	</script>
+    
 </body>
 
 </html>
