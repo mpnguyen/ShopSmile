@@ -138,6 +138,23 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 		firebase.auth().createUserWithEmailAndPassword($scope.userEmail, $scope.userPassword).then(function () {
 			// The signed-in user info.
 			$scope.messageError = "Tạo tài khoản thành công";
+            $('#mySignIn').modal('hide');
+            
+            var user = firebase.auth().currentUser;
+			if ($scope.data['users'][user.uid] != undefined) {
+				$scope.userCoin = $scope.data['users'][user.uid]['coin'];
+				$scope.$apply();
+				return;
+			} else {
+				var postData = {
+					coin: 100
+				};
+
+				var newPostKey = user.uid;
+				var updates = {};
+				updates['/users/' + newPostKey] = postData;
+				ref.update(updates);
+			}
 			$scope.$apply();
 
 		}).catch(function (error) {
@@ -208,6 +225,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 			// Sign-out successful.
 			$scope.userName = "";
 			$scope.isLogin = false;
+            $scope.$apply();
 		}, function (error) {
 			// An error happened.
 		});

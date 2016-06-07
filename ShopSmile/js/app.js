@@ -22,6 +22,10 @@ var app = angular.module('ShopSmile', [
 
 	
 	, 'firebase'
+    
+    ,'ng-fx'
+    
+    ,'ngAnimate'
 ]);
 
 app.config(['$routeProvider', function ($routeProvider) {
