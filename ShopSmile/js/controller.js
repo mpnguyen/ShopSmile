@@ -381,7 +381,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 
 		var mapProp = {
 			center: new google.maps.LatLng(10.745439, 106.692296)
-			, zoom: 17
+			, zoom: 15
 			, mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 		var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);

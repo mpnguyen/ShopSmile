@@ -50,9 +50,9 @@
 						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-show="isLogin" ng-click="setCoin()">Xin chao, {{userName}} <img ng-src={{userAvatar}} alt="avatar" class="img-circle iconAvatar" ng-show="isAvatar"><span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a class="txtMoney"><i class="ion-social-usd icon-money"></i>{{userCoin}}</a></li>
-							<li><a href="#post" ng-click="Post()">Post</a></li>
-							<li><a href="">Setting</a></li>
-							<li><a href="" ng-click="logout()">Log out</a></li>
+							<li><a href="#post" ng-click="Post()">Đăng bài</a></li>
+							<li><a href="">Quản lý bài đăng</a></li>
+							<li><a href="" ng-click="logout()">Đăng xuất</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -64,7 +64,7 @@
 
 	<div class="container">
 		<div class="col-md-3">
-            <div id="signInDiv">
+            <div id="signInDiv" ng-show="!isLogin" class="fx-bounce-normal">
                 <div class="modal-content">
                     <div class="modal-body">
                         <label class="txtLogin">Email</label>
@@ -122,7 +122,7 @@
 				</div>
 			</div>
 
-			<div ng-view></div>
+			<div ng-view class="fx-fade-up fx-ease-in-quad"></div>
 		</div>
 	</div>
 
