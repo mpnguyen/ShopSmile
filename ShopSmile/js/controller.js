@@ -512,4 +512,41 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 			}
 		};
 	});
+
+
+	var page_like_callback = function (respone) {
+		$scope.data['users'][firebase.auth().currentUser.uid]['coin'] += 50;
+		alert("like");
+		alert($scope.data['users'][firebase.auth().currentUser.uid]['coin']);
+	}
+
+	var page_unlike_callback = function (respone) {
+		$scope.data['users'][firebase.auth().currentUser.uid]['coin'] -= 50;
+		alert($scope.data['users'][firebase.auth().currentUser.uid]['coin']);
+	}
+
+	$scope.FB = function () {
+		FB.Event.subscribe('edge.create', page_like_callback);
+		FB.Event.subscribe('edge.remove', page_unlike_callback);
+	}
+
+	$scope.ShareFB = function () {
+		alert("Share");
+		FB.init({
+			appId: '1720940114851406'
+			, xfbml: true
+			, version: 'v2.1'
+		});
+		FB.ui({
+			method: 'share'
+			, display: 'popup'
+			, href: 'https://www.facebook.com/shopesmile/'
+		, }, function (response) {
+			if (response && !response.error_message) {
+				alert('Posting completed.');
+			}
+		});
+
+	}
+
 });
