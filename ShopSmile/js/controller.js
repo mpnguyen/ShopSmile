@@ -243,9 +243,57 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 		return new Array(intNum);
 	};
 
-	$scope.loadDetail = function (index) {
-		$rootScope.product = $rootScope.outItems[index];
-		console.log($scope.product);
+	$scope.loadDetail = function (index, key = "") {
+		index = parseInt(index);
+
+		if (key != "") {
+			switch (key) {
+			case 'vehicles':
+				$rootScope.product = $scope.vehiclesHotProducts[index];
+				break;
+			case 'houses':
+				$rootScope.product = $scope.housesHotProducts[index];
+				break;
+			case 'fashions':
+				$rootScope.product = $scope.fashionsHotProducts[index];
+				break;
+			case 'electrical_equipments':
+				$rootScope.product = $scope.electrical_equipmentsHotProducts[index];
+				break;
+			case 'mobiles':
+				$rootScope.product = $scope.mobilesHotProducts[index];
+				break;
+			case 'jobs':
+				$rootScope.product = $scope.jobsHotProducts[index];
+				break;
+			case 'housewares':
+				$rootScope.product = $scope.housewaresHotProducts[index];
+				break;
+			case 'books':
+				$rootScope.product = $scope.booksHotProducts;
+				break;
+			case 'sports':
+				$rootScope.product = $scope.sportsHotProducts[index];
+				break;
+			case 'office_equipments':
+				$rootScope.product = $scope.office_equipmentsHotProducts[index];
+				break;
+			case 'health':
+				$rootScope.product = $scope.healthHotProducts[index];
+				break;
+			case 'services':
+				$rootScope.product = $scope.servicesHotProducts[index];
+				break;
+			case 'others':
+				$rootScope.product = $scope.othersHotProducts[index];
+				break;
+			default:
+				break;
+
+			}
+		} else {
+			$rootScope.product = $rootScope.outItems[index];
+		}
 	};
 
 
@@ -396,7 +444,18 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 				, auto: true
 				, pager: false
 			});
-			console.log(slider.getSlideCount());
+			$('a[href^="#"]').click(function () {
+				var target = $(this.hash);
+				var hash = this.hash;
+				if (target.length == 0) target = $('a[name="' + this.hash.substr(1) + '"]');
+				if (target.length == 0) target = $('html');
+				$('html, body').animate({
+					scrollTop: target.offset().top
+				}, 500, function () {
+					location.hash = hash;
+				});
+				return false;
+			});
 		});
 	});
 

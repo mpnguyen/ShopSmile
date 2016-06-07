@@ -139,7 +139,7 @@
 							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
 							<h4>{{item.price}}</h4>
 							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail" class="btn btn-primary " role="button" ng-click="loadDetail($index)">Chi tiết</a></p>
+							<p><a href="#detail" class="btn btn-primary " role="button" ng-click="loadDetail($index,'vehicles')">Chi tiết</a></p>
 						</div>
 					</div>
 				</div>
@@ -153,7 +153,7 @@
 				<h3><a href="#home" role="button" ng-click="loadPage('houses')">Nhà ở</a></h3>
 			</div>
 			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in housesHotProducts" on-finish-render="loadSlider">
+				<div class="slide" ng-repeat="item in housesHotProducts">
 					<div class="thumbnail">
 						<div back-img="{{item.avatar}}" class="thumbImg"></div>
 						<div class=" caption ">
@@ -174,7 +174,7 @@
 				<h3><a href="#home" role="button" ng-click="loadPage('fashions')">Thời trang</a></h3>
 			</div>
 			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in fashionsHotProducts" on-finish-render="loadSlider">
+				<div class="slide" ng-repeat="item in fashionsHotProducts">
 					<div class="thumbnail">
 						<div back-img="{{item.avatar}}" class="thumbImg"></div>
 						<div class=" caption ">
@@ -195,7 +195,7 @@
 				<h3><a href="#home" role="button" ng-click="loadPage('electrical_equipments')">Điện máy</a></h3>
 			</div>
 			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in electrical_equipmentsHotProducts" on-finish-render="loadSlider">
+				<div class="slide" ng-repeat="item in electrical_equipmentsHotProducts">
 					<div class="thumbnail">
 						<div back-img="{{item.avatar}}" class="thumbImg"></div>
 						<div class=" caption ">
@@ -216,7 +216,7 @@
 				<h3><a href="#home" role="button" ng-click="loadPage('mobiles')">Thiết bị di động</a></h3>
 			</div>
 			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in mobilesHotProducts" on-finish-render="loadSlider">
+				<div class="slide" ng-repeat="item in mobilesHotProducts">
 					<div class="thumbnail">
 						<div back-img="{{item.avatar}}" class="thumbImg"></div>
 						<div class=" caption ">
@@ -237,7 +237,7 @@
 				<h3><a href="#home" role="button" ng-click="loadPage('jobs')">Việc làm</a></h3>
 			</div>
 			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in jobsHotProducts" on-finish-render="loadSlider">
+				<div class="slide" ng-repeat="item in jobsHotProducts">
 					<div class="thumbnail">
 						<div back-img="{{item.avatar}}" class="thumbImg"></div>
 						<div class=" caption ">
@@ -258,7 +258,7 @@
 				<h3><a href="#home" role="button" ng-click="loadPage('housewares')">Đồ gia dụng</a></h3>
 			</div>
 			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in housewaresHotProducts" on-finish-render="loadSlider">
+				<div class="slide" ng-repeat="item in housewaresHotProducts">
 					<div class="thumbnail">
 						<div back-img="{{item.avatar}}" class="thumbImg"></div>
 						<div class=" caption ">
@@ -279,7 +279,7 @@
 				<h3><a href="#home" role="button" ng-click="loadPage('books')">Sách</a></h3>
 			</div>
 			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in booksHotProducts" on-finish-render="loadSlider">
+				<div class="slide" ng-repeat="item in booksHotProducts">
 					<div class="thumbnail">
 						<div back-img="{{item.avatar}}" class="thumbImg"></div>
 						<div class=" caption ">
@@ -300,7 +300,7 @@
 				<h3><a href="#home" role="button" ng-click="loadPage('sports')">Thể thao</a></h3>
 			</div>
 			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in sportsHotProducts" on-finish-render="loadSlider">
+				<div class="slide" ng-repeat="item in sportsHotProducts">
 					<div class="thumbnail">
 						<div back-img="{{item.avatar}}" class="thumbImg"></div>
 						<div class=" caption ">
@@ -321,7 +321,7 @@
 				<h3><a href="#home" role="button" ng-click="loadPage('office_equipments')">Thể thao</a></h3>
 			</div>
 			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in office_equipments" on-finish-render="loadSlider">
+				<div class="slide" ng-repeat="item in office_equipments">
 					<div class="thumbnail">
 						<div back-img="{{item.avatar}}" class="thumbImg"></div>
 						<div class=" caption ">
@@ -342,7 +342,7 @@
 				<h3><a href="#home" role="button" ng-click="loadPage('health')">Sức khỏe, sắc đẹp</a></h3>
 			</div>
 			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in healthHotProducts" on-finish-render="loadSlider">
+				<div class="slide" ng-repeat="item in healthHotProducts">
 					<div class="thumbnail">
 						<div back-img="{{item.avatar}}" class="thumbImg"></div>
 						<div class=" caption ">
@@ -363,7 +363,7 @@
 				<h3><a href="#home" role="button" ng-click="loadPage('services')">Dịch vụ</a></h3>
 			</div>
 			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in servicesHotProducts" on-finish-render="loadSlider">
+				<div class="slide" ng-repeat="item in servicesHotProducts">
 					<div class="thumbnail">
 						<div back-img="{{item.avatar}}" class="thumbImg"></div>
 						<div class=" caption ">
@@ -384,7 +384,7 @@
 				<h3><a href="#home" role="button" ng-click="loadPage('others')">Khác</a></h3>
 			</div>
 			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in othersHotProducts" on-finish-render="loadSlider">
+				<div class="slide" ng-repeat="item in othersHotProducts">
 					<div class="thumbnail">
 						<div back-img="{{item.avatar}}" class="thumbImg"></div>
 						<div class=" caption ">
@@ -443,22 +443,6 @@
 	<script src="components/version/version-directive.js"></script>
 	<script src="components/version/interpolate-filter.js"></script>
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
-	<script>
-		$(document).ready(function () {
-			$('a[href^="#"]').click(function () {
-				var target = $(this.hash);
-				var hash = this.hash;
-				if (target.length == 0) target = $('a[name="' + this.hash.substr(1) + '"]');
-				if (target.length == 0) target = $('html');
-				$('html, body').animate({
-					scrollTop: target.offset().top
-				}, 500, function () {
-					location.hash = hash;
-				});
-				return false;
-			});
-		});
-	</script>
 </body>
 
 </html>
