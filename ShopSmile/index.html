@@ -110,7 +110,7 @@
 				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('others')">Khác</a>
 			</div>
 
-			<div class="fb-page" data-href="https://www.facebook.com/shopesmile/" data-hide-cover="false" data-show-facepile="true"></div>
+			<div class="fb-page  facebook" data-href="https://www.facebook.com/shopesmile/" data-hide-cover="false" data-show-facepile="true"></div>
 			<img class="img-responsive" src="http://www.businessstudynotes.com/wp-content/uploads/2016/05/Types-of-Advertising-Media.jpg" alt="ads">
 			<img class="img-responsive" src="http://www.businessstudynotes.com/wp-content/uploads/2016/05/Types-of-Advertising-Media.jpg" alt="ads">
 		</div>
@@ -448,24 +448,23 @@
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
 
 	<script>
-		FB.ui({
-				method: 'feed'
-				, name: 'Facebook Dialogs'
-				, link: 'http://youtubeplaylist.net'
-				, picture: 'http://fbrell.com/f8.jpg'
-				, caption: 'Reference Documentation'
-				, description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
-			}
-			, function (response) {
-				if (response && response.post_id) {
-					alert('Post was published.');
-				} else {
-					alert('Post was not published.');
-				}
-			}
-		);
+		/*FB.ui({
+										method: 'feed'
+										, name: 'Facebook Dialogs'
+										, link: 'http://youtubeplaylist.net'
+										, picture: 'http://fbrell.com/f8.jpg'
+										, caption: 'Reference Documentation'
+										, description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
+									}
+									, function (response) {
+										if (response && response.post_id) {
+											alert('Post was published.');
+										} else {
+											alert('Post was not published.');
+										}
+									}
+								);*/
 
-		};
 		(function (d, s, id) {
 			var js, fjs = d.getElementsByTagName(s)[0];
 			if (d.getElementById(id)) return;

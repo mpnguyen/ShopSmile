@@ -28,7 +28,6 @@ body {}
 
 .modal-header {
 	text-align: center;
-    
 }
 
 .modal-title {
@@ -71,7 +70,6 @@ body {}
 .icon-Login {
 	height: 34px;
 	width: 34px;
-	
 }
 
 .inputLogin {
@@ -112,6 +110,10 @@ body {}
 	color: #0288D1;
 }
 
-#signInDiv{
-    margin-bottom: 20px;
+#signInDiv {
+	margin-bottom: 20px;
+}
+
+.facebook {
+	width: 252px;
 }
