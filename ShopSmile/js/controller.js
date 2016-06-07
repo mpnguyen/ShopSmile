@@ -55,11 +55,11 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 	};
 
 
-	var provider = new firebase.auth.FacebookAuthProvider();
-	provider.addScope('public_profile');
+	var providerFace = new firebase.auth.FacebookAuthProvider();
+	providerFace.addScope('public_profile');
 
 	$scope.loginFacebook = function () {
-		firebase.auth().signInWithPopup(provider).then(function (result) {
+		firebase.auth().signInWithPopup(providerFace).then(function (result) {
 			// This gives you a Facebook Access Token. You can use it to access the Facebook API.
 			var token = result.credential.accessToken;
 			// The signed-in user info.
@@ -103,7 +103,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 		});
 	};
 
-	provider = new firebase.auth.GoogleAuthProvider();
+	var provider = new firebase.auth.GoogleAuthProvider();
 	provider.addScope('https://www.googleapis.com/auth/plus.login');
 	$scope.loginGoogle = function () {
 		firebase.auth().signInWithPopup(provider).then(function (result) {
@@ -163,6 +163,21 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 				$scope.$apply();
 				return;
 			} else {
+                if($routeParams.uid!=undefined){
+                    if($scope.data['users'][$routeParams.uid]!=undefined){
+                        var temp = $scope.data['users'][$routeParams.uid]['coin'] += 50;
+                        
+                        var post = {
+					       coin: temp
+				        };
+                        
+                        var newPostKey = $routeParams.uid;
+                        var updat = {};
+                        updat['/users/' + newPostKey] = post;
+                        
+                        ref.update(updat);
+                    }
+                }
 				var postData = {
 					coin: 100
 				};
@@ -172,6 +187,8 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 				updates['/users/' + newPostKey] = postData;
 				ref.update(updates);
 			}
+            
+            
 			$scope.$apply();
 
 		}).catch(function (error) {
@@ -463,7 +480,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 				, auto: true
 				, pager: false
 			});
-			$('a[href^="#"]').click(function () {
+			/*$('a[href^="#"]').click(function () {
 				var target = $(this.hash);
 				var hash = this.hash;
 				if (target.length == 0) target = $('a[name="' + this.hash.substr(1) + '"]');
@@ -474,7 +491,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 					location.hash = hash;
 				});
 				return false;
-			});
+			});*/
 		});
 	});
 

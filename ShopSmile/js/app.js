@@ -37,6 +37,14 @@ app.config(['$routeProvider', function ($routeProvider) {
 			templateUrl: 'partials/post-item.html'
 			, controller: 'ShopSmileCtrl'
 		})
+        .when('/regiter/:uid', {
+			templateUrl: 'partials/regiter.html'
+			, controller: 'ShopSmileCtrl'
+		})
+        .when('/my-list', {
+			templateUrl: 'partials/my-list-products.html'
+			, controller: 'ShopSmileCtrl'
+		})
 		.otherwise({
 			redirectTo: '/home'
 		});
