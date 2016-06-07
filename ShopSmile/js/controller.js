@@ -531,7 +531,6 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 	}
 
 	$scope.ShareFB = function () {
-		alert("Share");
 		FB.init({
 			appId: '1720940114851406'
 			, xfbml: true
