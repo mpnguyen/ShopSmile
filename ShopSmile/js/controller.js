@@ -515,14 +515,21 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 
 
 	var page_like_callback = function (respone) {
-		$scope.data['users'][firebase.auth().currentUser.uid]['coin'] += 50;
-		alert("like");
-		alert($scope.data['users'][firebase.auth().currentUser.uid]['coin']);
+		var user = firebase.auth().currentUser;
+		if (user) {
+			$scope.data['users'][user.uid]['coin'] += 50;
+		} else {
+			alert("Bạn chưa đăng nhập vào website nên không nhận được xu.");
+		}
 	}
 
 	var page_unlike_callback = function (respone) {
-		$scope.data['users'][firebase.auth().currentUser.uid]['coin'] -= 50;
-		alert($scope.data['users'][firebase.auth().currentUser.uid]['coin']);
+		var user = firebase.auth().currentUser;
+		if (user) {
+			$scope.data['users'][user.uid]['coin'] -= 50;
+		} else {
+			alert("Bạn chưa đăng nhập vào website.");
+		}
 	}
 
 	$scope.FB = function () {
@@ -542,10 +549,14 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 			, href: 'https://www.facebook.com/shopesmile/'
 		, }, function (response) {
 			if (response && !response.error_message) {
-				alert('Posting completed.');
+				var user = firebase.auth().currentUser;
+				if (user) {
+					$scope.data['users'][user.uid]['coin'] -= 50;
+				} else {
+					alert("Bạn chưa đăng nhập vào website nên không nhận được xu");
+				}
 			}
 		});
-
 	}
 
 });
