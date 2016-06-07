@@ -138,9 +138,9 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 		firebase.auth().createUserWithEmailAndPassword($scope.userEmail, $scope.userPassword).then(function () {
 			// The signed-in user info.
 			$scope.messageError = "Tạo tài khoản thành công";
-            $('#mySignIn').modal('hide');
-            
-            var user = firebase.auth().currentUser;
+			$('#mySignIn').modal('hide');
+
+			var user = firebase.auth().currentUser;
 			if ($scope.data['users'][user.uid] != undefined) {
 				$scope.userCoin = $scope.data['users'][user.uid]['coin'];
 				$scope.$apply();
@@ -225,7 +225,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 			// Sign-out successful.
 			$scope.userName = "";
 			$scope.isLogin = false;
-            $scope.$apply();
+			$scope.$apply();
 		}, function (error) {
 			// An error happened.
 		});
@@ -249,7 +249,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 
 
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////
 
 	// root in Storage
 	var storageRef = firebase.storage().ref();
@@ -289,6 +289,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 					}
 					, status: $scope.status
 					, title: $scope.title
+					, priority: "0"
 				};
 
 				var newPostKey = $scope.data['products'][$scope.type].length
@@ -327,21 +328,75 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 	$scope.maxTitle = 40;
 	$scope.maxDetail = 80;
 
-    function initialize() {
-        
-          var mapProp = {
-            center:new google.maps.LatLng(10.745439, 106.692296),
-            zoom:17,
-            mapTypeId:google.maps.MapTypeId.ROADMAP
-          };
-          var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-        
-          var marker=new google.maps.Marker({
-            position:new google.maps.LatLng(10.745439, 106.692296),
-            animation:google.maps.Animation.BOUNCE
-            });
+	function initialize() {
 
-           marker.setMap(map);
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
+		var mapProp = {
+			center: new google.maps.LatLng(10.745439, 106.692296)
+			, zoom: 17
+			, mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+		var marker = new google.maps.Marker({
+			position: new google.maps.LatLng(10.745439, 106.692296)
+			, animation: google.maps.Animation.BOUNCE
+		});
+
+		marker.setMap(map);
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
+
+	function filterByPriority(data) {
+		return data.priority == 1;
+	}
+
+	function shuffle(array) {
+		var currentIndex = array.length
+			, temporaryValue, randomIndex;
+
+		while (0 !== currentIndex) {
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+
+		return array;
+	}
+
+	$scope.$watch('data', function () {
+		if ($scope.data != undefined) {
+			$scope.vehiclesHotProducts = shuffle($scope.data['products']['vehicles'].filter(filterByPriority)).slice(0, 6);
+			$scope.booksHotProducts = shuffle($scope.data['products']['books'].filter(filterByPriority)).slice(0, 6);
+			$scope.housesHotProducts = shuffle($scope.data['products']['houses'].filter(filterByPriority)).slice(0, 6);
+			$scope.fashionsHotProducts = shuffle($scope.data['products']['fashions'].filter(filterByPriority)).slice(0, 6);
+			$scope.electrical_equipmentsHotProducts = shuffle($scope.data['products']['electrical_equipments'].filter(filterByPriority)).slice(0, 6);
+			$scope.mobilesHotProducts = shuffle($scope.data['products']['mobiles'].filter(filterByPriority)).slice(0, 6);
+			$scope.jobsHotProducts = shuffle($scope.data['products']['jobs'].filter(filterByPriority)).slice(0, 6);
+			$scope.housewaresHotProducts = shuffle($scope.data['products']['housewares'].filter(filterByPriority)).slice(0, 6);
+			$scope.sportsHotProducts = shuffle($scope.data['products']['sports'].filter(filterByPriority)).slice(0, 6);
+			$scope.office_equipmentsHotProducts = shuffle($scope.data['products']['office_equipments'].filter(filterByPriority)).slice(0, 6);
+			$scope.healthHotProducts = shuffle($scope.data['products']['health'].filter(filterByPriority)).slice(0, 6);
+			$scope.servicesHotProducts = shuffle($scope.data['products']['services'].filter(filterByPriority)).slice(0, 6);
+			$scope.othersHotProducts = shuffle($scope.data['products']['others'].filter(filterByPriority)).slice(0, 6);
+		}
+	}, true);
+
+	$scope.$on('loadSlider', function (ngRepeatFinishedEvent) {
+		$(document).ready(function () {
+			slider = $('.sliderProduct').bxSlider({
+				slideWidth: 280
+				, minSlides: 1
+				, maxSlides: 4
+				, moveSlides: 1
+				, slideMargin: 10
+				, controls: false
+				, auto: true
+				, pager: false
+			});
+			console.log(slider.getSlideCount());
+		});
+	});
+
 });

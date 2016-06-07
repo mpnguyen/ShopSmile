@@ -14,16 +14,6 @@
 
 <nav col-md-12>
 	<ul class="pagination navbar-right ">
-		<li>
-			<a href="#" aria-label="Previous ">
-				<span aria-hidden="true">&laquo;</span>
-			</a>
-		</li>
 		<li><a href="#home" role="button" ng-repeat="i in getNumber(maxPages) track by $index" ng-click="loadPage(itemListName,$index)">{{$index+1}}</a></li>
-		<li>
-			<a href="# " aria-label="Next ">
-				<span aria-hidden="true">&raquo;</span>
-			</a>
-		</li>
 	</ul>
 </nav>
