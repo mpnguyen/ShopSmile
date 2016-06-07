@@ -47,9 +47,6 @@
 				</form>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="" data-toggle="modal" data-target="#mySignIn" ng-show="!isLogin" ng-click="resetLogin()">Login</a>
-					</li>
-					<li>
 						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-show="isLogin" ng-click="setCoin()">Xin chao, {{userName}} <img ng-src={{userAvatar}} alt="avatar" class="img-circle iconAvatar" ng-show="isAvatar"><span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a class="txtMoney"><i class="ion-social-usd icon-money"></i>{{userCoin}}</a></li>
@@ -67,6 +64,35 @@
 
 	<div class="container">
 		<div class="col-md-3">
+            <div id="signInDiv">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <label class="txtLogin">Email</label>
+                        <input class="form-control inputLogin" type="text" ng-model="userEmail">
+                        <label class="txtLogin">Password</label>
+                        <input class="form-control inputLogin" type="password" ng-model="userPassword">
+                        <label class="messageError">{{messageError}}</label>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <button id="register" type="button" class="btn btn-default" ng-click="createAccount()">Đăng kí</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-default" ng-click="loginAccount()">Đăng nhập</button>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" ng-click="loginFacebook()"><i class="ion-social-facebook btn btn-primary icon-Login"></i></a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" ng-click="loginGoogle()"><i class="ion-social-google btn btn-danger icon-Login"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 			<div class="list-group">
 				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('vehicles')">Xe</a>
 				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('houses')">Nhà</a>
@@ -398,45 +424,6 @@
 			</div>
 		</div>
 	</footer>
-
-	<!-- Sign in-->
-	<div id="mySignIn" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">ĐĂNG NHẬP</h4>
-				</div>
-				<div class="modal-body">
-					<label class="txtLogin">Email</label>
-					<input class="form-control inputLogin" type="text" ng-model="userEmail">
-					<label class="txtLogin">Password</label>
-					<input class="form-control inputLogin" type="password" ng-model="userPassword">
-					<label class="messageError">{{messageError}}</label>
-				</div>
-				<div class="modal-footer">
-					<div class="row">
-						<div class="col-md-2">
-							<button type="button" class="btn btn-default" ng-click="loginAccount()">Đăng nhập</button>
-						</div>
-						<div class="col-md-1">
-							<a href="#" ng-click="loginFacebook()"><i class="ion-social-facebook btn btn-primary icon-Login"></i></a>
-						</div>
-						<div class="col-md-1">
-							<a href="#" ng-click="loginGoogle()"><i class="ion-social-google btn btn-danger icon-Login"></i></a>
-						</div>
-						<div class="col-md-4">
-						</div>
-						<div class="col-md-2">
-							<button id="register" type="button" class="btn btn-default" ng-click="createAccount()">Đăng kí</button>
-						</div>
-						<div class="col-md-2">
-							<button id="exit" type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<script src="bower_components/jquery/jquery-2.2.4.min.js"></script>
 	<script src="bower_components/jquery.bxslider/jquery.bxslider.min.js"></script>

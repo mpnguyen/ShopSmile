@@ -20,7 +20,7 @@ body {}
 }
 
 #register {
-	margin-left: 8px;
+	margin-bottom: 5px;
 }
 
 
@@ -28,10 +28,11 @@ body {}
 
 .modal-header {
 	text-align: center;
+    
 }
 
 .modal-title {
-	font-size: 30px;
+	font-size: 15px;
 	font-weight: bold;
 }
 
@@ -70,12 +71,12 @@ body {}
 .icon-Login {
 	height: 34px;
 	width: 34px;
-	margin-left: 13px;
+	
 }
 
 .inputLogin {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .txtLogin {
@@ -83,7 +84,7 @@ body {}
 }
 
 .messageError {
-	font-size: 15px;
+	font-size: 12px;
 	color: #F57C00;
 }
 
@@ -109,4 +110,8 @@ body {}
 
 #smile {
 	color: #0288D1;
+}
+
+#signInDiv{
+    margin-bottom: 20px;
 }

@@ -24,6 +24,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 			}
 
 			$scope.isLogin = true;
+            $scope.resetLogin();
 			$scope.$apply();
 		} else {
 
