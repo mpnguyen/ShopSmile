@@ -31,11 +31,27 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 		}
 	});
 
+	function filerByUID(data) {
+		var user = firebase.auth().currentUser;
+		return data.salesman.uid === user.uid;
+	};
+
 	$scope.loadPage = function (key, pageNumber = 0) {
 		$scope.itemListName = key;
-		listItems = $scope.data['products'][key];
-		$rootScope.outItems = listItems.slice(parseInt(pageNumber) * 6, parseInt(pageNumber) * 6 + 6);
-		$rootScope.maxPages = listItems.length / 6;
+		listItems = [];
+		if (key == 'MyPost') {
+			var listProduct = Object.keys($scope.data['products']);
+			listProduct.forEach(function (keyList) {
+				listItems = listItems.concat($scope.data['products'][keyList].filter(filerByUID));
+				console.log($scope.data['products'][keyList].filter(filerByUID));
+			});
+			$rootScope.outItems = listItems.slice(parseInt(pageNumber) * 6, parseInt(pageNumber) * 6 + 6);
+			$rootScope.maxPages = listItems.length / 6;
+		} else {
+			listItems = $scope.data['products'][key];
+			$rootScope.outItems = listItems.slice(parseInt(pageNumber) * 6, parseInt(pageNumber) * 6 + 6);
+			$rootScope.maxPages = listItems.length / 6;
+		};
 	};
 
 
@@ -463,8 +479,6 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 	});
 
 	$scope.$watch('$viewContentLoaded', function () {
-		console.log(1223);
-		console.log($routeParams);
 		if ($routeParams.list != "") {
 			index = $routeParams.index;
 			switch ($routeParams.list) {
@@ -490,7 +504,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 				$rootScope.product = $scope.housewaresHotProducts[index];
 				break;
 			case 'books':
-				$rootScope.product = $scope.booksHotProducts;
+				$rootScope.product = $scope.booksHotProducts[index];
 				break;
 			case 'sports':
 				$rootScope.product = $scope.sportsHotProducts[index];

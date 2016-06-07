@@ -52,7 +52,7 @@
 						<ul class="dropdown-menu">
 							<li><a class="txtMoney"><i class="ion-social-usd icon-money"></i>{{userCoin}}</a></li>
 							<li><a href="#post" ng-click="Post()">Đăng bài</a></li>
-							<li><a href="">Quản lý bài đăng</a></li>
+							<li><a href="#my-list" ng-click="loadPage('MyPost')">Quản lý bài đăng</a></li>
 							<li><a href="" ng-click="logout()">Đăng xuất</a></li>
 						</ul>
 					</li>
@@ -141,7 +141,7 @@
 							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
 							<h4>{{item.price}}</h4>
 							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail/vehicles/{{$index}}" class="btn btn-primary" scroll-to role="button">Chi tiết</a>
+							<p><a href="#detail/vehicles/{{$index}}" class="btn btn-primary" role="button">Chi tiết</a>
 							</p>
 						</div>
 					</div>
@@ -163,7 +163,7 @@
 							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
 							<h4>{{item.price}}</h4>
 							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail" class="btn btn-primary " role="button" ng-click="loadDetail($index)">Chi tiết</a></p>
+							<p><a href="#detail/houses/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
 						</div>
 					</div>
 				</div>
@@ -184,7 +184,7 @@
 							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
 							<h4>{{item.price}}</h4>
 							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail" class="btn btn-primary " role="button" ng-click="loadDetail($index)">Chi tiết</a></p>
+							<p><a href="#detail/fashions/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
 						</div>
 					</div>
 				</div>
@@ -205,7 +205,7 @@
 							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
 							<h4>{{item.price}}</h4>
 							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail" class="btn btn-primary " role="button" ng-click="loadDetail($index)">Chi tiết</a></p>
+							<p><a href="#detail/electrical_equipments/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
 						</div>
 					</div>
 				</div>
@@ -226,7 +226,7 @@
 							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
 							<h4>{{item.price}}</h4>
 							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail" class="btn btn-primary " role="button" ng-click="loadDetail($index)">Chi tiết</a></p>
+							<p><a href="#detail/mobiles/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
 						</div>
 					</div>
 				</div>
@@ -247,7 +247,7 @@
 							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
 							<h4>{{item.price}}</h4>
 							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail" class="btn btn-primary " role="button" ng-click="loadDetail($index)">Chi tiết</a></p>
+							<p><a href="#detail/jobs/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
 						</div>
 					</div>
 				</div>
@@ -268,7 +268,7 @@
 							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
 							<h4>{{item.price}}</h4>
 							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail" class="btn btn-primary " role="button" ng-click="loadDetail($index)">Chi tiết</a></p>
+							<p><a href="#detail/housewares/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
 						</div>
 					</div>
 				</div>
@@ -289,7 +289,7 @@
 							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
 							<h4>{{item.price}}</h4>
 							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail" class="btn btn-primary " role="button" ng-click="loadDetail($index)">Chi tiết</a></p>
+							<p><a href="#detail/books/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
 						</div>
 					</div>
 				</div>
@@ -310,7 +310,7 @@
 							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
 							<h4>{{item.price}}</h4>
 							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail" class="btn btn-primary " role="button" ng-click="loadDetail($index)">Chi tiết</a></p>
+							<p><a href="#detail/sports/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
 						</div>
 					</div>
 				</div>
@@ -331,7 +331,7 @@
 							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
 							<h4>{{item.price}}</h4>
 							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail" class="btn btn-primary " role="button" ng-click="loadDetail($index)">Chi tiết</a></p>
+							<p><a href="#detail/office_equipments/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
 						</div>
 					</div>
 				</div>
@@ -352,7 +352,7 @@
 							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
 							<h4>{{item.price}}</h4>
 							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail" class="btn btn-primary " role="button" ng-click="loadDetail($index)">Chi tiết</a></p>
+							<p><a href="#detail/health/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
 						</div>
 					</div>
 				</div>
@@ -373,7 +373,7 @@
 							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
 							<h4>{{item.price}}</h4>
 							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail" class="btn btn-primary " role="button" ng-click="loadDetail($index)">Chi tiết</a></p>
+							<p><a href="#detail/services/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
 						</div>
 					</div>
 				</div>
@@ -394,7 +394,7 @@
 							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
 							<h4>{{item.price}}</h4>
 							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail" class="btn btn-primary " role="button" ng-click="loadDetail($index)">Chi tiết</a></p>
+							<p><a href="#detail/others/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
 						</div>
 					</div>
 				</div>
