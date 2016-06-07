@@ -447,6 +447,18 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 				, auto: true
 				, pager: false
 			});
+			$('a[href^="#"]').click(function () {
+				var target = $(this.hash);
+				var hash = this.hash;
+				if (target.length == 0) target = $('a[name="' + this.hash.substr(1) + '"]');
+				if (target.length == 0) target = $('html');
+				$('html, body').animate({
+					scrollTop: target.offset().top
+				}, 500, function () {
+					location.hash = hash;
+				});
+				return false;
+			});
 		});
 	});
 
