@@ -11,27 +11,22 @@ firebase.initializeApp(config);
 // Declare app level module which depends on views, and components
 var app = angular.module('ShopSmile', [
   'ngRoute'
-	
 	, 'myApp.version'
-
-	
 	, 'ShopSmileController'
-
-	
 	, 'ShopSmileDirective'
-
-	
 	, 'firebase'
-    
-    ,'ng-fx'
-    
-    ,'ngAnimate'
+	, 'ng-fx'
+	, 'ngAnimate'
 ]);
 
 app.config(['$routeProvider', function ($routeProvider) {
 	$routeProvider
 		.when('/home', {
 			templateUrl: 'partials/list-products.html'
+			, controller: 'ShopSmileCtrl'
+		})
+		.when('/detail/:list/:index', {
+			templateUrl: 'partials/product-detail.html'
 			, controller: 'ShopSmileCtrl'
 		})
 		.when('/detail', {

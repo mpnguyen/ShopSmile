@@ -21,7 +21,7 @@
 </head>
 
 <body ng-controller="ShopSmileCtrl">
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-inverse" ng-init="checkLoadDB=0">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -65,34 +65,34 @@
 	<div class="container">
 		<div class="col-md-3">
             <div id="signInDiv" ng-show="!isLogin" class="fx-bounce-normal">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <label class="txtLogin">Email</label>
-                        <input class="form-control inputLogin" type="text" ng-model="userEmail">
-                        <label class="txtLogin">Password</label>
-                        <input class="form-control inputLogin" type="password" ng-model="userPassword">
-                        <label class="messageError">{{messageError}}</label>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <button id="register" type="button" class="btn btn-default" ng-click="createAccount()">Đăng kí</button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button type="button" class="btn btn-default" ng-click="loginAccount()">Đăng nhập</button>
-                            </div>
-                            <div class="col-md-3">
-                                <a href="#" ng-click="loginFacebook()"><i class="ion-social-facebook btn btn-primary icon-Login"></i></a>
-                            </div>
-                            <div class="col-md-3">
-                                <a href="#" ng-click="loginGoogle()"><i class="ion-social-google btn btn-danger icon-Login"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+				<div class="modal-content">
+					<div class="modal-body">
+						<label class="txtLogin">Email</label>
+						<input class="form-control inputLogin" type="text" ng-model="userEmail">
+						<label class="txtLogin">Password</label>
+						<input class="form-control inputLogin" type="password" ng-model="userPassword">
+						<label class="messageError">{{messageError}}</label>
+					</div>
+					<div class="modal-footer">
+						<div class="row">
+							<div class="col-md-2">
+								<button id="register" type="button" class="btn btn-default" ng-click="createAccount()">Đăng kí</button>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<button type="button" class="btn btn-default" ng-click="loginAccount()">Đăng nhập</button>
+							</div>
+							<div class="col-md-3">
+								<a href="#" ng-click="loginFacebook()"><i class="ion-social-facebook btn btn-primary icon-Login"></i></a>
+							</div>
+							<div class="col-md-3">
+								<a href="#" ng-click="loginGoogle()"><i class="ion-social-google btn btn-danger icon-Login"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="list-group">
 				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('vehicles')">Xe</a>
 				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('houses')">Nhà</a>
@@ -117,9 +117,7 @@
 				<h1>Hello, world!</h1>
 				<p>...</p>
 				<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-				<div id="home">
-					<div id="detail"></div>
-				</div>
+				<div smooth-scroll></div>
 			</div>
 
 			<div ng-view class="fx-fade-up fx-ease-in-quad"></div>
@@ -139,7 +137,8 @@
 							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
 							<h4>{{item.price}}</h4>
 							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail" class="btn btn-primary " role="button" ng-click="loadDetail($index,'vehicles')">Chi tiết</a></p>
+							<p><a href="#detail"><a href="#detail/vehicles/{{$index}}" class="btn btn-primary" scroll-to role="button">Chi tiết</a></a>
+							</p>
 						</div>
 					</div>
 				</div>
@@ -436,6 +435,7 @@
 	<script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
 	<script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5"></script>
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script src="bower_components/angular-smooth-scroll/angular-smooth-scroll.min.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/otherDirective.js"></script>
 	<script src="js/controller.js"></script>

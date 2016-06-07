@@ -1,6 +1,6 @@
 var app = angular.module('ShopSmileController', []);
 
-app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
+app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $routeParams) {
 	var ref = firebase.database().ref();
 
 	var syncObject = $firebaseObject(ref);
@@ -24,7 +24,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 			}
 
 			$scope.isLogin = true;
-            $scope.resetLogin();
+			$scope.resetLogin();
 			$scope.$apply();
 		} else {
 
@@ -416,19 +416,22 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 
 	$scope.$watch('data', function () {
 		if ($scope.data != undefined) {
-			$scope.vehiclesHotProducts = shuffle($scope.data['products']['vehicles'].filter(filterByPriority)).slice(0, 6);
-			$scope.booksHotProducts = shuffle($scope.data['products']['books'].filter(filterByPriority)).slice(0, 6);
-			$scope.housesHotProducts = shuffle($scope.data['products']['houses'].filter(filterByPriority)).slice(0, 6);
-			$scope.fashionsHotProducts = shuffle($scope.data['products']['fashions'].filter(filterByPriority)).slice(0, 6);
-			$scope.electrical_equipmentsHotProducts = shuffle($scope.data['products']['electrical_equipments'].filter(filterByPriority)).slice(0, 6);
-			$scope.mobilesHotProducts = shuffle($scope.data['products']['mobiles'].filter(filterByPriority)).slice(0, 6);
-			$scope.jobsHotProducts = shuffle($scope.data['products']['jobs'].filter(filterByPriority)).slice(0, 6);
-			$scope.housewaresHotProducts = shuffle($scope.data['products']['housewares'].filter(filterByPriority)).slice(0, 6);
-			$scope.sportsHotProducts = shuffle($scope.data['products']['sports'].filter(filterByPriority)).slice(0, 6);
-			$scope.office_equipmentsHotProducts = shuffle($scope.data['products']['office_equipments'].filter(filterByPriority)).slice(0, 6);
-			$scope.healthHotProducts = shuffle($scope.data['products']['health'].filter(filterByPriority)).slice(0, 6);
-			$scope.servicesHotProducts = shuffle($scope.data['products']['services'].filter(filterByPriority)).slice(0, 6);
-			$scope.othersHotProducts = shuffle($scope.data['products']['others'].filter(filterByPriority)).slice(0, 6);
+			if ($scope.checkLoadDB == 0) {
+				$scope.vehiclesHotProducts = shuffle($scope.data['products']['vehicles'].filter(filterByPriority)).slice(0, 6);
+				$scope.booksHotProducts = shuffle($scope.data['products']['books'].filter(filterByPriority)).slice(0, 6);
+				$scope.housesHotProducts = shuffle($scope.data['products']['houses'].filter(filterByPriority)).slice(0, 6);
+				$scope.fashionsHotProducts = shuffle($scope.data['products']['fashions'].filter(filterByPriority)).slice(0, 6);
+				$scope.electrical_equipmentsHotProducts = shuffle($scope.data['products']['electrical_equipments'].filter(filterByPriority)).slice(0, 6);
+				$scope.mobilesHotProducts = shuffle($scope.data['products']['mobiles'].filter(filterByPriority)).slice(0, 6);
+				$scope.jobsHotProducts = shuffle($scope.data['products']['jobs'].filter(filterByPriority)).slice(0, 6);
+				$scope.housewaresHotProducts = shuffle($scope.data['products']['housewares'].filter(filterByPriority)).slice(0, 6);
+				$scope.sportsHotProducts = shuffle($scope.data['products']['sports'].filter(filterByPriority)).slice(0, 6);
+				$scope.office_equipmentsHotProducts = shuffle($scope.data['products']['office_equipments'].filter(filterByPriority)).slice(0, 6);
+				$scope.healthHotProducts = shuffle($scope.data['products']['health'].filter(filterByPriority)).slice(0, 6);
+				$scope.servicesHotProducts = shuffle($scope.data['products']['services'].filter(filterByPriority)).slice(0, 6);
+				$scope.othersHotProducts = shuffle($scope.data['products']['others'].filter(filterByPriority)).slice(0, 6);
+				$scope.checkLoadDB = 1;
+			}
 		}
 	}, true);
 
@@ -444,19 +447,57 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject) {
 				, auto: true
 				, pager: false
 			});
-			$('a[href^="#"]').click(function () {
-				var target = $(this.hash);
-				var hash = this.hash;
-				if (target.length == 0) target = $('a[name="' + this.hash.substr(1) + '"]');
-				if (target.length == 0) target = $('html');
-				$('html, body').animate({
-					scrollTop: target.offset().top
-				}, 500, function () {
-					location.hash = hash;
-				});
-				return false;
-			});
 		});
 	});
 
+	$scope.$watch('$viewContentLoaded', function () {
+		console.log(1223);
+		console.log($routeParams);
+		if ($routeParams.list != "") {
+			index = $routeParams.index;
+			switch ($routeParams.list) {
+			case 'vehicles':
+				$rootScope.product = $scope.vehiclesHotProducts[index];
+				break;
+			case 'houses':
+				$rootScope.product = $scope.housesHotProducts[index];
+				break;
+			case 'fashions':
+				$rootScope.product = $scope.fashionsHotProducts[index];
+				break;
+			case 'electrical_equipments':
+				$rootScope.product = $scope.electrical_equipmentsHotProducts[index];
+				break;
+			case 'mobiles':
+				$rootScope.product = $scope.mobilesHotProducts[index];
+				break;
+			case 'jobs':
+				$rootScope.product = $scope.jobsHotProducts[index];
+				break;
+			case 'housewares':
+				$rootScope.product = $scope.housewaresHotProducts[index];
+				break;
+			case 'books':
+				$rootScope.product = $scope.booksHotProducts;
+				break;
+			case 'sports':
+				$rootScope.product = $scope.sportsHotProducts[index];
+				break;
+			case 'office_equipments':
+				$rootScope.product = $scope.office_equipmentsHotProducts[index];
+				break;
+			case 'health':
+				$rootScope.product = $scope.healthHotProducts[index];
+				break;
+			case 'services':
+				$rootScope.product = $scope.servicesHotProducts[index];
+				break;
+			case 'others':
+				$rootScope.product = $scope.othersHotProducts[index];
+				break;
+			default:
+				break;
+			}
+		};
+	});
 });
