@@ -1,6 +1,8 @@
 var app = angular.module('ShopSmileController', []);
 
-app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $routeParams) {
+app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $routeParams, $route) {
+	console.log("Reset sau xoa");
+
 	var ref = firebase.database().ref();
 
 	var syncObject = $firebaseObject(ref);
@@ -38,14 +40,21 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 	};
 
 	$scope.loadPage = function (key, pageNumber = 0) {
+		$scope.currentPage = pageNumber;
+		$scope.myListTypeProduct = [];
 		$scope.itemListName = key;
 		listItems = [];
 		if (key == 'MyPost') {
 			var listProduct = Object.keys($scope.data['products']);
 			listProduct.forEach(function (keyList) {
+				var resultFilter = $scope.data['products'][keyList].filter(filerByUID);
+				for (i = 0; i < resultFilter.length; i++) {
+					$scope.myListTypeProduct.push(keyList);
+				}
+
 				listItems = listItems.concat($scope.data['products'][keyList].filter(filerByUID));
-				console.log($scope.data['products'][keyList].filter(filerByUID));
 			});
+			console.log("DSSP:" + $scope.myListTypeProduct);
 			$rootScope.outItems = listItems.slice(parseInt(pageNumber) * 6, parseInt(pageNumber) * 6 + 6);
 			$rootScope.maxPages = listItems.length / 6;
 		} else {
@@ -164,21 +173,21 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 				$scope.$apply();
 				return;
 			} else {
-                if($routeParams.uid!=undefined){
-                    if($scope.data['users'][$routeParams.uid]!=undefined){
-                        var temp = $scope.data['users'][$routeParams.uid]['coin'] += 50;
-                        
-                        var post = {
-					       coin: temp
-				        };
-                        
-                        var newPostKey = $routeParams.uid;
-                        var updat = {};
-                        updat['/users/' + newPostKey] = post;
-                        
-                        ref.update(updat);
-                    }
-                }
+				if ($routeParams.uid != undefined) {
+					if ($scope.data['users'][$routeParams.uid] != undefined) {
+						var temp = $scope.data['users'][$routeParams.uid]['coin'] += 50;
+
+						var post = {
+							coin: temp
+						};
+
+						var newPostKey = $routeParams.uid;
+						var updat = {};
+						updat['/users/' + newPostKey] = post;
+
+						ref.update(updat);
+					}
+				}
 				var postData = {
 					coin: 100
 				};
@@ -188,8 +197,8 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 				updates['/users/' + newPostKey] = postData;
 				ref.update(updates);
 			}
-            
-            
+
+
 			$scope.$apply();
 
 		}).catch(function (error) {
@@ -352,36 +361,63 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 	};
 
 	$scope.PostNewProduct = function () {
+		$scope.type = $scope.type == undefined ? "others" : $scope.type;
 		var user = firebase.auth().currentUser;
+		var newPostKey = $scope.data['products'][$scope.type].length;
 		if (user) {
-			// upload image to server
-			var uploadTask = storageRef.child($scope.type + '/' + file.name).put(file);
-			uploadTask.on('state_changed', null, function (error) {
-				console.error('Upload failed:', error);
-			}, function () {
-				// tao data
+			if (file == null) {
 				var postData = {
-					avatar: uploadTask.snapshot.metadata.downloadURLs[0]
-					, detail: $scope.detail
-					, price: $scope.price
+					avatar: "Khong co"
+					, detail: $scope.detail == undefined ? "Không nhập" : $scope.detail
+					, price: $scope.price == undefined ? "Không nhập" : $scope.price
 					, salesman: {
-						address: $scope.address
-						, name: $scope.name
-						, phone: $scope.phone
+						address: $scope.address == undefined ? "Không nhập" : $scope.address
+						, name: $scope.name == undefined ? "Không nhập" : $scope.name
+						, phone: $scope.phone == undefined ? "Không nhập" : $scope.phone
 						, uid: firebase.auth().currentUser.uid
 					}
-					, status: $scope.status
-					, title: $scope.title
+					, status: $scope.status == undefined ? "Không nhập" : $scope.status
+					, title: $scope.title == undefined ? "Không nhập" : scope.title
 					, priority: "0"
+					, index: newPostKey
 				};
 
-				var newPostKey = $scope.data['products'][$scope.type].length
 				var updates = {};
 				updates['/products/' + $scope.type + '/' + newPostKey] = postData;
 				ref.update(updates);
-
+				// tru tien khi post bai
+				$scope.data['users'][user.uid]['coin'] -= 20;
 				$rootScope.product = postData;
-			});
+			} else {
+				// upload image to server
+				var uploadTask = storageRef.child($scope.type + '/' + file.name).put(file);
+				uploadTask.on('state_changed', null, function (error) {
+					console.error('Upload failed:', error);
+				}, function () {
+					// tao data
+					var postData = {
+						avatar: uploadTask.snapshot.metadata.downloadURLs[0] == null ? " " : uploadTask.snapshot.metadata.downloadURLs[0]
+						, detail: $scope.detail == undefined ? "Không nhập" : $scope.detail
+						, price: $scope.price == undefined ? "Không nhập" : $scope.price
+						, salesman: {
+							address: $scope.address == undefined ? "Không nhập" : $scope.address
+							, name: $scope.name == undefined ? "Không nhập" : $scope.name
+							, phone: $scope.phone == undefined ? "Không nhập" : $scope.phone
+							, uid: firebase.auth().currentUser.uid
+						}
+						, status: $scope.status == undefined ? "Không nhập" : $scope.status
+						, title: $scope.title == undefined ? "Không nhập" : scope.title
+						, priority: "0"
+						, index: newPostKey
+					};
+
+					var updates = {};
+					updates['/products/' + $scope.type + '/' + newPostKey] = postData;
+					ref.update(updates);
+					scope.data['users'][user.uid]['coin'] -= 20;
+					$rootScope.product = postData;
+				});
+			}
 		} else {
 			window.location.href = "index.html";
 		}
@@ -482,18 +518,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 				, auto: true
 				, pager: false
 			});
-			/*$('a[href^="#"]').click(function () {
-				var target = $(this.hash);
-				var hash = this.hash;
-				if (target.length == 0) target = $('a[name="' + this.hash.substr(1) + '"]');
-				if (target.length == 0) target = $('html');
-				$('html, body').animate({
-					scrollTop: target.offset().top
-				}, 500, function () {
-					location.hash = hash;
-				});
-				return false;
-			});*/
+
 		});
 	});
 
@@ -590,6 +615,29 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 				}
 			}
 		});
+	}
+
+	$scope.deleteProduct = function (index) {
+		var indexOfMyList = $scope.currentPage * 6 + index;
+		var id = $rootScope.outItems[index]['index'];
+
+		var updates = {};
+		updates['/products/' + $scope.myListTypeProduct[indexOfMyList] + '/' + id] = null;
+		ref.update(updates);
+		alert("Delete thanh cong refresh lai trang de xem.");
+	}
+
+	$scope.postToHome = function (index) {
+		var user = firebase.auth().currentUser;
+		if (user) {
+			$scope.data['users'][user.uid]['coin'] -= 100;
+			var indexOfMyList = $scope.currentPage * 6 + index;
+			var id = $rootScope.outItems[index]['index'];
+			$scope.data['products'][$scope.myListTypeProduct[indexOfMyList]][id]['priority'] = 1;
+			alert("Post vao trang chu thanh cong refresh lai trang de xem.");
+		} else {
+			alert("Bạn chưa đăng nhập vào website.");
+		}
 	}
 
 });

@@ -6,7 +6,17 @@
 				<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
 				<h4>{{item.price}}</h4>
 				<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-				<p><a href="#detail" class="btn btn-primary " role="button" ng-click="loadDetail($index)">Chi tiết</a></p>
+				<div class="row">
+					<div class="col-xs-4">
+						<a href="#detail" class="btn btn-primary " role="button" ng-click="loadDetail($index)">Chi tiết</a>
+					</div>
+					<div class="col-xs-3">
+						<a href="#my-list" class="btn btn-primary " role="button" ng-click="deleteProduct($index)">Xóa</a>
+					</div>
+					<div class="col-xs-5">
+						<a href="#" class="btn btn-primary " role="button" ng-click="postToHome($index)">Post VIP</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
