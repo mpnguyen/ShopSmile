@@ -22,7 +22,8 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 			} else {
 				$scope.userName = user.displayName;
 			}
-
+            
+            $scope.linkInvite = 'http://127.0.0.1:51111/index.html#/regiter/' + user.uid;
 			$scope.isLogin = true;
 			$scope.resetLogin();
 			$scope.$apply();
@@ -465,6 +466,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 				$scope.othersHotProducts = shuffle($scope.data['products']['others'].filter(filterByPriority)).slice(0, 6);
 				$scope.checkLoadDB = 1;
 			}
+            $scope.loadPage('vehicles');
 		}
 	}, true);
 
@@ -562,7 +564,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 			alert("Bạn chưa đăng nhập vào website.");
 		}
 	}
-
+    
 	$scope.FB = function () {
 		FB.Event.subscribe('edge.create', page_like_callback);
 		FB.Event.subscribe('edge.remove', page_unlike_callback);

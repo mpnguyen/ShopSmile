@@ -6,474 +6,516 @@
 <html lang="en" ng-app="ShopSmile" class="no-js">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Shop Smile</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
-	<link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-	<link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="bower_components/jquery.bxslider/jquery.bxslider.css">
-	<link rel="stylesheet" href="css/app.css">
-	<link rel="stylesheet" type="text/css" href="bower_components/ionicons/css/ionicons.min.css">
-	<script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Shop Smile</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/jquery.bxslider/jquery.bxslider.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/ionicons/css/ionicons.min.css">
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body ng-controller="ShopSmileCtrl">
-	<div id="fb-root" ng-init="FB()"></div>
-	<nav class="navbar navbar-inverse" ng-init="checkLoadDB=0">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only">Menu</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">ShopSmile</a>
-			</div>
+    <div id="fb-root" ng-init="FB()"></div>
+    <nav class="navbar navbar-inverse" ng-init="checkLoadDB=0">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">ShopSmile</a>
+            </div>
 
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li><a href="#">Contact</a></li>
-				</ul>
-				<form class="navbar-form navbar-right" role="search">
-					<div class="form-group">
-						<input type="text" class="search-form form-control" placeholder="Search">
-					</div>
-					<button type="submit" class="btn btn-danger">Submit</button>
-				</form>
-				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-show="isLogin" ng-click="setCoin()">Xin chao, {{userName}} <img ng-src={{userAvatar}} alt="avatar" class="img-circle iconAvatar" ng-show="isAvatar"><span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a class="txtMoney"><i class="ion-social-usd icon-money"></i>{{userCoin}}</a></li>
-							<li><a href="#post" ng-click="Post()">Đăng bài</a></li>
-							<li><a href="#my-list" ng-click="loadPage('MyPost')">Quản lý bài đăng</a></li>
-							<li><a href="" ng-click="logout()">Đăng xuất</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container-fluid -->
-	</nav>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="search-form form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-danger">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-show="isLogin" ng-click="setCoin()">Xin chao, {{userName}} <img ng-src={{userAvatar}} alt="avatar" class="img-circle iconAvatar" ng-show="isAvatar"><span class="caret"></span></a>
+                        <ul class="dropdown-menu fx-bounce-normal">
+                            <li><a class="txtMoney"><i class="ion-social-usd icon-money"></i>{{userCoin}}</a></li>
+                            <li><a href="#post" ng-click="Post()">Đăng bài</a></li>
+                            <li><a href="#my-list" ng-click="loadPage('MyPost')">Quản lý bài đăng</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#myInviteFriend">Mời bạn bè</a></li>
+                            <li><a href="" ng-click="logout()">Đăng xuất</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 
-	<div class="container">
-		<div class="col-md-3">
-			<div id="signInDiv" ng-show="!isLogin" class="fx-bounce-normal">
-				<div class="modal-content">
-					<div class="modal-body">
-						<label class="txtLogin">Email</label>
-						<input class="form-control inputLogin" type="text" ng-model="userEmail">
-						<label class="txtLogin">Password</label>
-						<input class="form-control inputLogin" type="password" ng-model="userPassword">
-						<label class="messageError">{{messageError}}</label>
-					</div>
-					<div class="modal-footer">
-						<div class="row">
-							<div class="col-md-2">
-								<button id="register" type="button" class="btn btn-default" ng-click="createAccount()">Đăng kí</button>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<button type="button" class="btn btn-default" ng-click="loginAccount()">Đăng nhập</button>
-							</div>
-							<div class="col-md-3">
-								<a href="#" ng-click="loginFacebook()"><i class="ion-social-facebook btn btn-primary icon-Login"></i></a>
-							</div>
-							<div class="col-md-3">
-								<a href="#" ng-click="loginGoogle()"><i class="ion-social-google btn btn-danger icon-Login"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="list-group">
-				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('vehicles')">Xe</a>
-				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('houses')">Nhà</a>
-				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('fashions')">Thời trang</a>
-				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('electrical_equipments')">Điện máy</a>
-				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('mobiles')">Thiết bị di động</a>
-				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('jobs')">Việc làm</a>
-				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('housewares')">Đồ gia dụng</a>
-				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('books')">Sách</a>
-				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('sports')">Thể thao</a>
-				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('office_equipments')">Dụng cụ văn phòng</a>
-				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('health')">Sức khỏe, sắc đẹp</a>
-				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('services')">Dịch vụ</a>
-				<a href="#home" role="button" class="list-group-item" ng-click="loadPage('others')">Khác</a>
-			</div>
+    <div class="container">
+        <div class="col-md-3">
+            <div id="signInDiv" ng-show="!isLogin" class="fx-bounce-normal">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <label class="txtLogin">Email</label>
+                        <input class="form-control inputLogin" type="text" ng-model="userEmail">
+                        <label class="txtLogin">Password</label>
+                        <input class="form-control inputLogin" type="password" ng-model="userPassword">
+                        <label class="messageError">{{messageError}}</label>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button id="btnSignIn" type="button" class="btn btn-default" ng-click="loginAccount()">Đăng nhập</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button id="register" type="button" class="btn btn-default" ng-click="createAccount()">Đăng kí</button>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" ng-click="loginFacebook()"><i class="ion-social-facebook btn btn-primary icon-Login"></i></a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" ng-click="loginGoogle()"><i class="ion-social-google btn btn-danger icon-Login"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                        
+                   
+                </div>
+            </div>
+            <div class="list-group">
+                <a href="#home" role="button" class="list-group-item fx-bounce-normal" ng-click="loadPage('vehicles')">Xe</a>
+                <a href="#home" role="button" class="list-group-item fx-bounce-normal" ng-click="loadPage('houses')">Nhà</a>
+                <a href="#home" role="button" class="list-group-item" ng-click="loadPage('fashions')">Thời trang</a>
+                <a href="#home" role="button" class="list-group-item" ng-click="loadPage('electrical_equipments')">Điện máy</a>
+                <a href="#home" role="button" class="list-group-item" ng-click="loadPage('mobiles')">Thiết bị di động</a>
+                <a href="#home" role="button" class="list-group-item" ng-click="loadPage('jobs')">Việc làm</a>
+                <a href="#home" role="button" class="list-group-item" ng-click="loadPage('housewares')">Đồ gia dụng</a>
+                <a href="#home" role="button" class="list-group-item" ng-click="loadPage('books')">Sách</a>
+                <a href="#home" role="button" class="list-group-item" ng-click="loadPage('sports')">Thể thao</a>
+                <a href="#home" role="button" class="list-group-item" ng-click="loadPage('office_equipments')">Dụng cụ văn phòng</a>
+                <a href="#home" role="button" class="list-group-item" ng-click="loadPage('health')">Sức khỏe, sắc đẹp</a>
+                <a href="#home" role="button" class="list-group-item" ng-click="loadPage('services')">Dịch vụ</a>
+                <a href="#home" role="button" class="list-group-item" ng-click="loadPage('others')">Khác</a>
+            </div>
 
-			<div class="fb-page  facebook" data-href="https://www.facebook.com/shopesmile/" data-hide-cover="false" data-show-facepile="true"></div>
-			<img class="img-responsive" src="http://www.businessstudynotes.com/wp-content/uploads/2016/05/Types-of-Advertising-Media.jpg" alt="ads">
-			<img class="img-responsive" src="http://www.businessstudynotes.com/wp-content/uploads/2016/05/Types-of-Advertising-Media.jpg" alt="ads">
-		</div>
-		<div class="col-md-9">
-			<div class="jumbotron">
-				<h1>Hello, world!</h1>
-				<p>...</p>
-				<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-				<div id="home">
-					<div id="detail"></div>
-				</div>
-			</div>
+            <div class="fb-page  facebook" data-href="https://www.facebook.com/shopesmile/" data-hide-cover="false" data-show-facepile="true"></div>
+           
+            <img class="img-responsive image-left" src="https://firebasestorage.googleapis.com/v0/b/project-8852431456818982833.appspot.com/o/QuangCao%2Fquangcao5.png?alt=media&token=b5ea06aa-9fda-42a2-9e75-745a33159dea" alt="ads">
+            
+            <img class="img-responsive image-left" src="https://firebasestorage.googleapis.com/v0/b/project-8852431456818982833.appspot.com/o/QuangCao%2Fquangcao6.png?alt=media&token=1d5538f8-dae3-47e3-9178-73fb35af39b1" alt="ads">
+        </div>
+        <div class="col-md-9">
+            <div class="jumbotron">
+                <div class="container">
+                    <br>
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                            <li data-target="#myCarousel" data-slide-to="3"></li>
+                        </ol>
 
-			<div ng-view class="fx-fade-up fx-ease-in-quad"></div>
-		</div>
-	</div>
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <img src="https://firebasestorage.googleapis.com/v0/b/project-8852431456818982833.appspot.com/o/QuangCao%2Fquangcao1.jpg?alt=media&token=2c76d5c2-9cb3-48a0-8e52-3cd69751a2da" alt="QuangCao" >
+                            </div>
 
-	<div class="container">
-		<div class="products">
-			<div class="page-header">
-				<h3><a href="#home" role="button" ng-click="loadPage('vehicles')">Xe</a></h3>
-			</div>
-			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in vehiclesHotProducts" on-finish-render="loadSlider">
-					<div class="thumbnail">
-						<div back-img="{{item.avatar}}" class="thumbImg"></div>
-						<div class=" caption ">
-							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
-							<h4>{{item.price}}</h4>
-							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail/vehicles/{{$index}}" class="btn btn-primary" role="button">Chi tiết</a>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                            <div class="item">
+                                <img src="https://firebasestorage.googleapis.com/v0/b/project-8852431456818982833.appspot.com/o/QuangCao%2Fquangcao2.jpg?alt=media&token=f0deb1b8-729a-4566-87d3-786d84ac51eb" alt="QuangCao" >
+                            </div>
 
-	<div class="container">
-		<div class="products">
-			<div class="page-header">
-				<h3><a href="#home" role="button" ng-click="loadPage('houses')">Nhà ở</a></h3>
-			</div>
-			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in housesHotProducts">
-					<div class="thumbnail">
-						<div back-img="{{item.avatar}}" class="thumbImg"></div>
-						<div class=" caption ">
-							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
-							<h4>{{item.price}}</h4>
-							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail/houses/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                            <div class="item">
+                                <img  src="https://firebasestorage.googleapis.com/v0/b/project-8852431456818982833.appspot.com/o/QuangCao%2Fquangcao3.jpg?alt=media&token=67ef0513-a89b-43dc-b5d4-d41a6d9e0658" alt="QuangCao" >
+                            </div>
 
-	<div class="container">
-		<div class="products">
-			<div class="page-header">
-				<h3><a href="#home" role="button" ng-click="loadPage('fashions')">Thời trang</a></h3>
-			</div>
-			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in fashionsHotProducts">
-					<div class="thumbnail">
-						<div back-img="{{item.avatar}}" class="thumbImg"></div>
-						<div class=" caption ">
-							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
-							<h4>{{item.price}}</h4>
-							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail/fashions/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                            <div class="item">
+                                <img  src="https://firebasestorage.googleapis.com/v0/b/project-8852431456818982833.appspot.com/o/QuangCao%2Fquangcao4.jpg?alt=media&token=94e775ed-94ad-4254-86f0-0e13b413cc88" alt="QuangCao" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-	<div class="container">
-		<div class="products">
-			<div class="page-header">
-				<h3><a href="#home" role="button" ng-click="loadPage('electrical_equipments')">Điện máy</a></h3>
-			</div>
-			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in electrical_equipmentsHotProducts">
-					<div class="thumbnail">
-						<div back-img="{{item.avatar}}" class="thumbImg"></div>
-						<div class=" caption ">
-							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
-							<h4>{{item.price}}</h4>
-							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail/electrical_equipments/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+            <div ng-view class="fx-bounce-right" ></div>
+        </div>
+    </div>
 
-	<div class="container">
-		<div class="products">
-			<div class="page-header">
-				<h3><a href="#home" role="button" ng-click="loadPage('mobiles')">Thiết bị di động</a></h3>
-			</div>
-			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in mobilesHotProducts">
-					<div class="thumbnail">
-						<div back-img="{{item.avatar}}" class="thumbImg"></div>
-						<div class=" caption ">
-							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
-							<h4>{{item.price}}</h4>
-							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail/mobiles/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="products">
+            <div class="page-header">
+                <h3><a href="#home" role="button" ng-click="loadPage('vehicles')">Xe</a></h3>
+            </div>
+            <div class="sliderProduct">
+                <div class="slide" ng-repeat="item in vehiclesHotProducts" on-finish-render="loadSlider">
+                    <div class="thumbnail">
+                        <div back-img="{{item.avatar}}" class="thumbImg"></div>
+                        <div class=" caption">
+                            <h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
+                            <h4>{{item.price}}</h4>
+                            <p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
+                            <p><a href="#detail/vehicles/{{$index}}" class="btn btn-primary" role="button">Chi tiết</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="container">
-		<div class="products">
-			<div class="page-header">
-				<h3><a href="#home" role="button" ng-click="loadPage('jobs')">Việc làm</a></h3>
-			</div>
-			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in jobsHotProducts">
-					<div class="thumbnail">
-						<div back-img="{{item.avatar}}" class="thumbImg"></div>
-						<div class=" caption ">
-							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
-							<h4>{{item.price}}</h4>
-							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail/jobs/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="products">
+            <div class="page-header">
+                <h3><a href="#home" role="button" ng-click="loadPage('houses')">Nhà ở</a></h3>
+            </div>
+            <div class="sliderProduct">
+                <div class="slide fx-bounce-normal" ng-repeat="item in housesHotProducts">
+                    <div class="thumbnail">
+                        <div back-img="{{item.avatar}}" class="thumbImg"></div>
+                        <div class=" caption ">
+                            <h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
+                            <h4>{{item.price}}</h4>
+                            <p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
+                            <p><a href="#detail/houses/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="container">
-		<div class="products">
-			<div class="page-header">
-				<h3><a href="#home" role="button" ng-click="loadPage('housewares')">Đồ gia dụng</a></h3>
-			</div>
-			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in housewaresHotProducts">
-					<div class="thumbnail">
-						<div back-img="{{item.avatar}}" class="thumbImg"></div>
-						<div class=" caption ">
-							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
-							<h4>{{item.price}}</h4>
-							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail/housewares/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="products">
+            <div class="page-header">
+                <h3><a href="#home" role="button" ng-click="loadPage('fashions')">Thời trang</a></h3>
+            </div>
+            <div class="sliderProduct">
+                <div class="slide" ng-repeat="item in fashionsHotProducts">
+                    <div class="thumbnail">
+                        <div back-img="{{item.avatar}}" class="thumbImg"></div>
+                        <div class=" caption ">
+                            <h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
+                            <h4>{{item.price}}</h4>
+                            <p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
+                            <p><a href="#detail/fashions/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="container">
-		<div class="products">
-			<div class="page-header">
-				<h3><a href="#home" role="button" ng-click="loadPage('books')">Sách</a></h3>
-			</div>
-			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in booksHotProducts">
-					<div class="thumbnail">
-						<div back-img="{{item.avatar}}" class="thumbImg"></div>
-						<div class=" caption ">
-							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
-							<h4>{{item.price}}</h4>
-							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail/books/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="products">
+            <div class="page-header">
+                <h3><a href="#home" role="button" ng-click="loadPage('electrical_equipments')">Điện máy</a></h3>
+            </div>
+            <div class="sliderProduct">
+                <div class="slide" ng-repeat="item in electrical_equipmentsHotProducts">
+                    <div class="thumbnail">
+                        <div back-img="{{item.avatar}}" class="thumbImg"></div>
+                        <div class=" caption ">
+                            <h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
+                            <h4>{{item.price}}</h4>
+                            <p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
+                            <p><a href="#detail/electrical_equipments/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="container">
-		<div class="products">
-			<div class="page-header">
-				<h3><a href="#home" role="button" ng-click="loadPage('sports')">Thể thao</a></h3>
-			</div>
-			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in sportsHotProducts">
-					<div class="thumbnail">
-						<div back-img="{{item.avatar}}" class="thumbImg"></div>
-						<div class=" caption ">
-							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
-							<h4>{{item.price}}</h4>
-							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail/sports/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="products">
+            <div class="page-header">
+                <h3><a href="#home" role="button" ng-click="loadPage('mobiles')">Thiết bị di động</a></h3>
+            </div>
+            <div class="sliderProduct">
+                <div class="slide" ng-repeat="item in mobilesHotProducts">
+                    <div class="thumbnail">
+                        <div back-img="{{item.avatar}}" class="thumbImg"></div>
+                        <div class=" caption ">
+                            <h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
+                            <h4>{{item.price}}</h4>
+                            <p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
+                            <p><a href="#detail/mobiles/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="container">
-		<div class="products">
-			<div class="page-header">
-				<h3><a href="#home" role="button" ng-click="loadPage('office_equipments')">Thể thao</a></h3>
-			</div>
-			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in office_equipments">
-					<div class="thumbnail">
-						<div back-img="{{item.avatar}}" class="thumbImg"></div>
-						<div class=" caption ">
-							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
-							<h4>{{item.price}}</h4>
-							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail/office_equipments/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="products">
+            <div class="page-header">
+                <h3><a href="#home" role="button" ng-click="loadPage('jobs')">Việc làm</a></h3>
+            </div>
+            <div class="sliderProduct">
+                <div class="slide" ng-repeat="item in jobsHotProducts">
+                    <div class="thumbnail">
+                        <div back-img="{{item.avatar}}" class="thumbImg"></div>
+                        <div class=" caption ">
+                            <h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
+                            <h4>{{item.price}}</h4>
+                            <p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
+                            <p><a href="#detail/jobs/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="container">
-		<div class="products">
-			<div class="page-header">
-				<h3><a href="#home" role="button" ng-click="loadPage('health')">Sức khỏe, sắc đẹp</a></h3>
-			</div>
-			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in healthHotProducts">
-					<div class="thumbnail">
-						<div back-img="{{item.avatar}}" class="thumbImg"></div>
-						<div class=" caption ">
-							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
-							<h4>{{item.price}}</h4>
-							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail/health/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="products">
+            <div class="page-header">
+                <h3><a href="#home" role="button" ng-click="loadPage('housewares')">Đồ gia dụng</a></h3>
+            </div>
+            <div class="sliderProduct">
+                <div class="slide" ng-repeat="item in housewaresHotProducts">
+                    <div class="thumbnail">
+                        <div back-img="{{item.avatar}}" class="thumbImg"></div>
+                        <div class=" caption ">
+                            <h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
+                            <h4>{{item.price}}</h4>
+                            <p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
+                            <p><a href="#detail/housewares/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="container">
-		<div class="products">
-			<div class="page-header">
-				<h3><a href="#home" role="button" ng-click="loadPage('services')">Dịch vụ</a></h3>
-			</div>
-			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in servicesHotProducts">
-					<div class="thumbnail">
-						<div back-img="{{item.avatar}}" class="thumbImg"></div>
-						<div class=" caption ">
-							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
-							<h4>{{item.price}}</h4>
-							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail/services/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="products">
+            <div class="page-header">
+                <h3><a href="#home" role="button" ng-click="loadPage('books')">Sách</a></h3>
+            </div>
+            <div class="sliderProduct">
+                <div class="slide" ng-repeat="item in booksHotProducts">
+                    <div class="thumbnail">
+                        <div back-img="{{item.avatar}}" class="thumbImg"></div>
+                        <div class=" caption ">
+                            <h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
+                            <h4>{{item.price}}</h4>
+                            <p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
+                            <p><a href="#detail/books/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="container">
-		<div class="products">
-			<div class="page-header">
-				<h3><a href="#home" role="button" ng-click="loadPage('others')">Khác</a></h3>
-			</div>
-			<div class="sliderProduct">
-				<div class="slide" ng-repeat="item in othersHotProducts">
-					<div class="thumbnail">
-						<div back-img="{{item.avatar}}" class="thumbImg"></div>
-						<div class=" caption ">
-							<h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
-							<h4>{{item.price}}</h4>
-							<p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
-							<p><a href="#detail/others/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="products">
+            <div class="page-header">
+                <h3><a href="#home" role="button" ng-click="loadPage('sports')">Thể thao</a></h3>
+            </div>
+            <div class="sliderProduct">
+                <div class="slide" ng-repeat="item in sportsHotProducts">
+                    <div class="thumbnail">
+                        <div back-img="{{item.avatar}}" class="thumbImg"></div>
+                        <div class=" caption ">
+                            <h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
+                            <h4>{{item.price}}</h4>
+                            <p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
+                            <p><a href="#detail/sports/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4">
-					<h5 id='footer-header'> LIÊN HỆ </h5>
-					<div>
-						<p>Team Developer: Smile</p>
-						<p>Phone: 01697921700</p>
-						<p>Feedback to email: nchai.ctt@gmail.com</p>
-						<p>Địa chỉ: 231/116/1E Dương Bá Trạc, P1, Q8, TP HCM</p>
-					</div>
+    <div class="container">
+        <div class="products">
+            <div class="page-header">
+                <h3><a href="#home" role="button" ng-click="loadPage('office_equipments')">Thể thao</a></h3>
+            </div>
+            <div class="sliderProduct">
+                <div class="slide" ng-repeat="item in office_equipments">
+                    <div class="thumbnail">
+                        <div back-img="{{item.avatar}}" class="thumbImg"></div>
+                        <div class=" caption ">
+                            <h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
+                            <h4>{{item.price}}</h4>
+                            <p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
+                            <p><a href="#detail/office_equipments/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-				</div>
-				<div class="col-sm-4">
-					<h5 id='footer-header'> Map Address </h5>
-					<div id="googleMap"></div>
-				</div>
-				<div class="col-sm-4">
-					<h5 id='footer-header'> Thông Tin </h5>
-					<p>Phiên bản 1.0.0</p>
-					<p>Phát triển bởi <span id="smile">SmileTeam</span> &copy; 2015 - 2016</p>
-				</div>
-			</div>
-		</div>
-	</footer>
+    <div class="container">
+        <div class="products">
+            <div class="page-header">
+                <h3><a href="#home" role="button" ng-click="loadPage('health')">Sức khỏe, sắc đẹp</a></h3>
+            </div>
+            <div class="sliderProduct">
+                <div class="slide" ng-repeat="item in healthHotProducts">
+                    <div class="thumbnail">
+                        <div back-img="{{item.avatar}}" class="thumbImg"></div>
+                        <div class=" caption ">
+                            <h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
+                            <h4>{{item.price}}</h4>
+                            <p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
+                            <p><a href="#detail/health/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<script src="bower_components/jquery/jquery-2.2.4.min.js"></script>
-	<script src="bower_components/jquery.bxslider/jquery.bxslider.min.js"></script>
-	<script src="bower_components/angular/angular.js"></script>
-	<script src="bower_components/angular-route/angular-route.js"></script>
-	<script src="bower_components/bootstrap/js/bootstrap.min.js"></script>
-	<script src="bower_components/angular-animate/angular-animate.min.js"></script>
-	<script src="bower_components/ng-fx/dist/ng-fx.min.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-	<script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
-	<script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5"></script>
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
-	<script src="js/app.js"></script>
-	<script src="js/otherDirective.js"></script>
-	<script src="js/controller.js"></script>
-	<script src="components/version/version.js"></script>
-	<script src="components/version/version-directive.js"></script>
-	<script src="components/version/interpolate-filter.js"></script>
-	<script src="http://maps.googleapis.com/maps/api/js"></script>
+    <div class="container">
+        <div class="products">
+            <div class="page-header">
+                <h3><a href="#home" role="button" ng-click="loadPage('services')">Dịch vụ</a></h3>
+            </div>
+            <div class="sliderProduct">
+                <div class="slide" ng-repeat="item in servicesHotProducts">
+                    <div class="thumbnail">
+                        <div back-img="{{item.avatar}}" class="thumbImg"></div>
+                        <div class=" caption ">
+                            <h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
+                            <h4>{{item.price}}</h4>
+                            <p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
+                            <p><a href="#detail/services/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<script>
-		/*FB.ui({
-										method: 'feed'
-										, name: 'Facebook Dialogs'
-										, link: 'http://youtubeplaylist.net'
-										, picture: 'http://fbrell.com/f8.jpg'
-										, caption: 'Reference Documentation'
-										, description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
-									}
-									, function (response) {
-										if (response && response.post_id) {
-											alert('Post was published.');
-										} else {
-											alert('Post was not published.');
-										}
-									}
-								);*/
+    <div class="container">
+        <div class="products">
+            <div class="page-header">
+                <h3><a href="#home" role="button" ng-click="loadPage('others')">Khác</a></h3>
+            </div>
+            <div class="sliderProduct">
+                <div class="slide" ng-repeat="item in othersHotProducts">
+                    <div class="thumbnail">
+                        <div back-img="{{item.avatar}}" class="thumbImg"></div>
+                        <div class=" caption ">
+                            <h4 class="title-item">{{item.title| limitTo : maxTitle}}{{item.title.length > maxTitle ? '...' : ''}}</h4>
+                            <h4>{{item.price}}</h4>
+                            <p class="list-item-detail">{{item.detail | limitTo : maxDetail}}{{item.detail.length > maxDetail ? '...' : ''}}</p>
+                            <p><a href="#detail/others/{{$index}}" class="btn btn-primary " role="button">Chi tiết</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-		(function (d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s);
-			js.id = id;
-			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1720940114851406";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	</script>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h5 id='footer-header'> LIÊN HỆ </h5>
+                    <div>
+                        <p>Team Developer: Smile</p>
+                        <p>Phone: 01697921700</p>
+                        <p>Feedback to email: nchai.ctt@gmail.com</p>
+                        <p>Địa chỉ: 231/116/1E Dương Bá Trạc, P1, Q8, TP HCM</p>
+                    </div>
+
+                </div>
+                <div class="col-sm-4">
+                    <h5 id='footer-header'> Map Address </h5>
+                    <div id="googleMap"></div>
+                </div>
+                <div class="col-sm-4">
+                    <h5 id='footer-header'> Thông Tin </h5>
+                    <p>Phiên bản 1.0.0</p>
+                    <p>Phát triển bởi <span id="smile">SmileTeam</span> &copy; 2015 - 2016</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--Invite Friend-->
+    <div id="myInviteFriend" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <label>Link mời bạn bè</label>
+                    <label>{{linkInvite}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="bower_components/jquery/jquery-2.2.4.min.js"></script>
+    <script src="bower_components/jquery.bxslider/jquery.bxslider.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/bootstrap/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/ng-fx/dist/ng-fx.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+    <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="js/app.js"></script>
+    <script src="js/otherDirective.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="components/version/version.js"></script>
+    <script src="components/version/version-directive.js"></script>
+    <script src="components/version/interpolate-filter.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+
+    <script>
+        /*FB.ui({
+                                        										method: 'feed'
+                                        										, name: 'Facebook Dialogs'
+                                        										, link: 'http://youtubeplaylist.net'
+                                        										, picture: 'http://fbrell.com/f8.jpg'
+                                        										, caption: 'Reference Documentation'
+                                        										, description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
+                                        									}
+                                        									, function (response) {
+                                        										if (response && response.post_id) {
+                                        											alert('Post was published.');
+                                        										} else {
+                                        											alert('Post was not published.');
+                                        										}
+                                        									}
+                                        								);*/
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1720940114851406";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+    </script>
 
 </body>
 

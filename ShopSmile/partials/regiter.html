@@ -1,16 +1,17 @@
 <div class="modal-content">
-					<div class="modal-body">
-						<label class="txtLogin">Email</label>
-						<input class="form-control inputLogin" type="text" ng-model="userEmail">
-						<label class="txtLogin">Password</label>
-						<input class="form-control inputLogin" type="password" ng-model="userPassword">
-						<label class="messageError">{{messageError}}</label>
-					</div>
-					<div class="modal-footer">
-						<div class="row">
-							<div class="col-md-2">
-								<button id="register" type="button" class="btn btn-default" ng-click="createAccount()">Đăng kí</button>
-							</div>
-						</div>
-					</div>
-				</div>
+    <div class="modal-body">
+        <label class="txtLogin">Email</label>
+        <input class="form-control inputLogin" type="text" ng-model="userEmail">
+        <label class="txtLogin">Password</label>
+        <input class="form-control inputLogin" type="password" ng-model="userPassword">
+        <label class="messageError">{{messageError}}</label>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <button id="invite" type="button" class="btn btn-success" ng-click="createAccount()">Đăng kí</button>
+            <a href="#">
+                <button id="invite" type="button" class="btn btn-danger">Thoát</button>
+            </a>
+        </div>
+    </div>
+</div>

@@ -20,7 +20,8 @@ body {}
 }
 
 #register {
-	margin-bottom: 5px;
+
+    width: 96px;;
 }
 
 
@@ -116,4 +117,35 @@ body {}
 
 .facebook {
 	width: 252px;
+}
+
+#invite{
+    width: 70%;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-right: 110px;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+.jumbotron{
+    padding: 0px !important;
+    background-color: white;
+    height: 285px;
+   
+}
+
+#btnSignIn{
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.image-left{
+    width: 252px;
+    height: 270px;
 }
