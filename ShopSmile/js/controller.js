@@ -616,6 +616,9 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 			}
 		});
 	}
+    
+   
+      
 
 	$scope.deleteProduct = function (index) {
 		var indexOfMyList = $scope.currentPage * 6 + index;
