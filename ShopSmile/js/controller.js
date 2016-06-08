@@ -25,7 +25,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 				$scope.userName = user.displayName;
 			}
             
-            $scope.linkInvite = 'http://127.0.0.1:51111/index.html#/regiter/' + user.uid;
+            $scope.linkInvite = 'http://www.1312168nchai.esy.es/DoAnCuoiKi/index.html#/regiter/' + user.uid;
 			$scope.isLogin = true;
 			$scope.resetLogin();
 			$scope.$apply();
@@ -396,17 +396,17 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 				}, function () {
 					// tao data
 					var postData = {
-						avatar: uploadTask.snapshot.metadata.downloadURLs[0] == null ? " " : uploadTask.snapshot.metadata.downloadURLs[0]
-						, detail: $scope.detail == undefined ? "Không nhập" : $scope.detail
-						, price: $scope.price == undefined ? "Không nhập" : $scope.price
+						avatar: uploadTask.snapshot.metadata.downloadURLs[0]
+						, detail: $scope.detail
+						, price: $scope.price 
 						, salesman: {
-							address: $scope.address == undefined ? "Không nhập" : $scope.address
-							, name: $scope.name == undefined ? "Không nhập" : $scope.name
-							, phone: $scope.phone == undefined ? "Không nhập" : $scope.phone
+							address: $scope.address 
+							, name: $scope.name 
+							, phone: $scope.phone 
 							, uid: firebase.auth().currentUser.uid
 						}
-						, status: $scope.status == undefined ? "Không nhập" : $scope.status
-						, title: $scope.title == undefined ? "Không nhập" : scope.title
+						, status: $scope.status 
+						, title: $scope.title 
 						, priority: "0"
 						, index: newPostKey
 					};
@@ -414,7 +414,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 					var updates = {};
 					updates['/products/' + $scope.type + '/' + newPostKey] = postData;
 					ref.update(updates);
-					scope.data['users'][user.uid]['coin'] -= 20;
+					$scope.data['users'][user.uid]['coin'] -= 20;
 					$rootScope.product = postData;
 				});
 			}
@@ -609,7 +609,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 			if (response && !response.error_message) {
 				var user = firebase.auth().currentUser;
 				if (user) {
-					$scope.data['users'][user.uid]['coin'] -= 50;
+					$scope.data['users'][user.uid]['coin'] += 20;
 				} else {
 					alert("Bạn chưa đăng nhập vào website nên không nhận được xu");
 				}

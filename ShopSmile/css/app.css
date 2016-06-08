@@ -159,3 +159,7 @@ body {}
   display: block;
   margin-top: 2000px;
 }
+
+#inviteText{
+    width: 500px;
+}
