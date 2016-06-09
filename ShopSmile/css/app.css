@@ -163,3 +163,9 @@ body {}
 #inviteText{
     width: 500px;
 }
+
+#shareFB{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 60px;
+}

@@ -14,7 +14,7 @@
 						<a href="#my-list" class="btn btn-primary " role="button" ng-click="deleteProduct($index)">Xóa</a>
 					</div>
 					<div class="col-xs-5">
-						<a href="#" class="btn btn-primary " role="button" ng-click="postToHome($index)">Post VIP</a>
+						<a href="#my-list" class="btn btn-primary " role="button" ng-click="postToHome($index)">Post VIP</a>
 					</div>
 				</div>
 			</div>
@@ -24,6 +24,6 @@
 
 <nav col-md-12>
 	<ul class="pagination navbar-right ">
-		<li><a href="#home" role="button" ng-repeat="i in getNumber(maxPages) track by $index" ng-click="loadPage(itemListName,$index)">{{$index+1}}</a></li>
+		<li><a href="#my-list" role="button" ng-repeat="i in getNumber(maxPages) track by $index" ng-click="loadPage(itemListName,$index)">{{$index+1}}</a></li>
 	</ul>
 </nav>
