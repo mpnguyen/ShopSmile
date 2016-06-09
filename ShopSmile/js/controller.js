@@ -501,8 +501,9 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
 				$scope.servicesHotProducts = shuffle($scope.data['products']['services'].filter(filterByPriority)).slice(0, 6);
 				$scope.othersHotProducts = shuffle($scope.data['products']['others'].filter(filterByPriority)).slice(0, 6);
 				$scope.checkLoadDB = 1;
+                $scope.loadPage('vehicles');
 			}
-            $scope.loadPage('vehicles');
+            
 		}
 	}, true);
 
