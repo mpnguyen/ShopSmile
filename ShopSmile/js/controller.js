@@ -364,7 +364,7 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
         var user = firebase.auth().currentUser;
         if ($scope.data['users'][user.uid]['coin'] >= 20) {
             $scope.type = $scope.type == undefined ? "others" : $scope.type;
-
+            var user = firebase.auth().currentUser;
             var newPostKey = $scope.data['products'][$scope.type].length;
             if (user) {
                 if (file == null) {
@@ -389,14 +389,14 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
                     ref.update(updates);
                     // tru tien khi post bai
                     var temp = $scope.data['users'][user.uid]['coin'] - 20;
-                    var postData = {
-                        coin: temp
-                    };
+                        var postDat = {
+                            coin: temp
+                        };
 
-                    var newPostKey = user.uid;
-                    var updates = {};
-                    updates['/users/' + newPostKey] = postData;
-                    ref.update(updates);
+                        var newPostKe = user.uid;
+                        var update = {};
+                        update['/users/' + newPostKe] = postDat;
+                        ref.update(update);
 
 
                     $rootScope.product = postData;
@@ -428,14 +428,14 @@ app.controller('ShopSmileCtrl', function ($scope, $rootScope, $firebaseObject, $
                         ref.update(updates);
 
                         var temp = $scope.data['users'][user.uid]['coin'] - 20;
-                        var postData = {
+                        var postDat = {
                             coin: temp
                         };
 
-                        var newPostKey = user.uid;
-                        var updates = {};
-                        updates['/users/' + newPostKey] = postData;
-                        ref.update(updates);
+                        var newPostKe = user.uid;
+                        var update = {};
+                        update['/users/' + newPostKe] = postDat;
+                        ref.update(update);
 
                         $rootScope.product = postData;
                     });
